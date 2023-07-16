@@ -9,9 +9,48 @@ class User:
         self.id = data['id']
         self.first = data['first']
         self.email = data['email']
-        self.passw = data['passw']
+        self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.reports = []
 
-   
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO users (first, email, password) VALUES(%(first)s, %(email)s, %(password)s)"
+        return connectToMySQL('onair').query_db(query, data)
+    
+    @classmethod
+    def get_one(cls, id):
+        query  = "SELECT * FROM users WHERE id = %(id)s;"
+        results = connectToMySQL('onair').query_db(query, id)
+        return cls(results[0])
+    
+    @classmethod
+    def get_email(cls, email):
+        query  = "SELECT * FROM users WHERE email = %(email)s;"
+        results = connectToMySQL('onair').query_db(query, email)
+        if len(results) < 1:
+            return False
+        return cls(results[0])
+
+    @staticmethod
+    def valid(user):
+        valid=True
+        query  = "SELECT * FROM users WHERE email = %(email)s;"
+        results = connectToMySQL('onair').query_db(query, user)
+        if len(results) >= 1:
+            flash("Email already taken!","register")
+            valid=False
+        if not EMAIL_REGEX.match(user['email']):
+            flash("Bad email format.", "register")
+            valid=False
+        if len(user['first']) < 3:
+            flash("First Name must be at least 3 characters","register")
+            valid=False
+        if len(user['password']) < 8:
+            flash("Password must be at least 8 char","register")
+            valid=False
+        if user['password'] != user['confirm']:
+            flash("Passwords don't match!","register")
+            valid=False
+            
+        return valid
