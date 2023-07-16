@@ -43,7 +43,7 @@ def dashboard():
     data = {
         'id' : session['id']
         }
-    return render_template('home.html', user= user.User.get_one(data))
+    return render_template('home.html', user= user.User.get_one(data), cities = city.City.cities())
 
 @app.route('/logout')
 def logout():

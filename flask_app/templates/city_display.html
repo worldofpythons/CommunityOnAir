@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Display City</title>
 </head>
 <body>
-    <h2>Welcome {{user.first}}</h2>
-
-    {%for city in cities%}
-        <p><a href="/{{city.name}}">{{city.name}}</a></p>
-    {%endfor%}
+    {{city.name}}
+    {% for report in city.reports %}
+        <p>{{report.name}} <a href="/{{report.id}}">View</a></p>
 </body>
 </html>

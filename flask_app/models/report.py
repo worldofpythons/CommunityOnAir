@@ -14,7 +14,7 @@ class Report:
         self.city = None
         self.user = None
         
-    @@classmethod
+    @classmethod
     def reports_with_users(cls):
         query = """
                 SELECT * FROM reports LEFT
