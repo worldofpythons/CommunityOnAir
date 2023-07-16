@@ -18,7 +18,8 @@ class Report:
     def reports_with_users(cls):
         query = """
                 SELECT * FROM reports LEFT
-                JOIN users on reports.user_id = users.id;
+                JOIN users on reports.user_id = users.id
+                LEFT JOIN cities on reports.city_id = cities.id;
                 """
         results = connectToMySQL('onair').query_db(query)
         reports = []
@@ -36,7 +37,8 @@ class Report:
                 "id": row['cities.id'],
                 "name":row['name'],
                 "created_at": row['cities.created_at'],
-                "updated_at": row['cities.updated_at']
+                "updated_at": row['cities.updated_at'],
+                "reports": None
             }
             this_report.user_id = user.User(user_data)
             this_report.city_id = city.City(city_data)
