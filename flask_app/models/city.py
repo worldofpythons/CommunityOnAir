@@ -33,7 +33,8 @@ class City:
             'location': row['location'],
             'created_at': row['reports.created_at'],
             'updated_at': row['reports.updated_at'],
-            'city_id': row['city_id']
+            'city_id': row['city_id'],
+            'user_id': row['user_id']
             }
             city.reports.append(report.Report(reports_data))
         return city

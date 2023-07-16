@@ -11,8 +11,8 @@ class Report:
         self.location = data['location']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.city = None
-        self.user = None
+        self.city_id = data['city_id']
+        self.user_id = data['user_id']
         
     @classmethod
     def reports_with_users(cls):
