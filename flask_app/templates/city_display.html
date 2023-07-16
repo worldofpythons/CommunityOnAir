@@ -10,10 +10,10 @@
 <body>
     {{cities.name}}
     {% for report in cities.reports %}
-        <p>{{report.what}} <a href="/{{report.id}}">View</a></p>
+        <p>{{report.what}} <a href="/{{cities.name}}/show/{{report.id}}">View</a></p>
         {%if report.user_id == session.id%}
             <P><a href="/delete/{{report.id}}">Delete</a></P>
-            <P><a href="/Edit/{{report.id}}">Edit</a></P>
+            <P><a href="/Edit/{{cities.name}}/{{report.id}}">Edit</a></P>
         {%endif%}
     {%endfor%}
 </body>

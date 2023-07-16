@@ -32,7 +32,14 @@ class Report:
                 "created_at": row['users.created_at'],
                 "updated_at": row['users.updated_at']
             }
-            this_report.user = user.User(user_data)
+            city_data = {
+                "id": row['cities.id'],
+                "name":row['name'],
+                "created_at": row['cities.created_at'],
+                "updated_at": row['cities.updated_at']
+            }
+            this_report.user_id = user.User(user_data)
+            this_report.city_id = city.City(city_data)
             reports.append(this_report)
         return reports
     
