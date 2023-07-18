@@ -7,15 +7,21 @@ from flask import flash
 class City:
     def __init__( self , data ):
         self.id = data['id']
-        self.name = data['name']
+        self.city_name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.reports = []
+
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO cities (name) VALUES(%(name)s);"
+        return connectToMySQL('communityOnAir').query_db(query, data)
+    
     
     @classmethod
     def cities(cls):
         query = "SELECT * FROM cities;"
-        results = connectToMySQL('onair').query_db(query)
+        results = connectToMySQL('communityOnAir').query_db(query)
         cities = []
         for city in results:
             cities.append(cls(city))
@@ -24,7 +30,7 @@ class City:
     @classmethod
     def city_with_reports(cls, id):
         query  = "SELECT * FROM cities LEFT JOIN reports ON reports.city_id = cities.id WHERE cities.id = %(id)s;"
-        results = connectToMySQL('onair').query_db(query, id)
+        results = connectToMySQL('communityOnAir').query_db(query, id)
         city = cls(results[0])
         for row in results:
             reports_data = {

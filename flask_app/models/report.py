@@ -7,7 +7,8 @@ from flask import flash
 class Report:
     def __init__( self , data ):
         self.id = data['id']
-        self.what = data['what']
+        self.city = data['city']
+        self.what_happened = data['what']
         self.location = data['location']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
@@ -21,7 +22,7 @@ class Report:
                 JOIN users on reports.user_id = users.id
                 LEFT JOIN cities on reports.city_id = cities.id;
                 """
-        results = connectToMySQL('onair').query_db(query)
+        results = connectToMySQL('communityOnAir').query_db(query)
         reports = []
         for row in results:
             this_report = cls(row)
@@ -48,12 +49,12 @@ class Report:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO reports (what, location, city_id, user_id) VALUES(%(what)s, %(location)s, %(city_id)s, %(user_id)s)"
-        return connectToMySQL('onair').query_db(query, data)
+        return connectToMySQL('communityOnAir').query_db(query, data)
     
     @classmethod
     def one(cls, id):
         query  = "SELECT * FROM reports WHERE id = %(id)s;"
-        results = connectToMySQL('onair').query_db(query, id)
+        results = connectToMySQL('communityOnAir').query_db(query, id)
         
         return cls(results[0])
     
@@ -62,12 +63,12 @@ class Report:
         query = """UPDATE reports 
                SET what=%(what)s,location=%(location)s, updated_at =NOW()
                 WHERE (id = %(id)s);"""
-        return connectToMySQL('onair').query_db(query,data) 
+        return connectToMySQL('communityOnAir').query_db(query,data) 
 
     @classmethod
     def delete(cls, id):
         query  = "DELETE FROM reports WHERE id = %(id)s;"
-        return connectToMySQL('onair').query_db(query, id)
+        return connectToMySQL('communityOnAir').query_db(query, id)
 
     @staticmethod
     def valid(report):
