@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- -----LINK WITH CSS FILE----- -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
+    <!-- -----LINK WITH CSS FILE----- -->
+    
     <title>Show</title>
 </head>
 <body>
+
+    <div class="nav">
+    <h1>TEST HEAD</h1>        
+        {%for city in cities%}
+        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
+        {%endfor%}
+        <div class="top_right">
+            <p class="test_user_name">TEST USER NAME</p>            
+            {% for user in users %}
+            <p>Welcome {{user.name}}</p>
+            {%endfor%}
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/city">Find your city</a></li>
+                <li><a href="/report">Report</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
     <h1>{{cityy}}</h1>
     <p>What Happened: {{report.what}}</p>
     <p>Location: {{report.location}}</p>

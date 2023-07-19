@@ -13,10 +13,18 @@ def index():
     return render_template("index.html")
 
 # ---------------------------------------------------
+#DASHBOARD
+
+@app.route('/home')
+def home():
+    return render_template("home.html")
+
+# ---------------------------------------------------
 # USER REGISTER
+
 @app.route('/register', methods=["POST"])
 def register():
-    if not User.valid(request.form):
+    if not User.is_valid_user(request.form):
         return redirect('/')
     data = {
         "name": request.form['name'],
@@ -29,6 +37,7 @@ def register():
 
 # ---------------------------------------------------
 #USER LOGIN
+
 @app.route('/login', methods=['POST'])
 def login():
     user = User.get_by_email({"email":request.form['email']})
@@ -43,6 +52,7 @@ def login():
 
 # ---------------------------------------------------
 # USER LOGOUT
+
 @app.route('/logout')
 def logout():
     session.clear()
