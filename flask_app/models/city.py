@@ -1,23 +1,27 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import report, user
-import re
-EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+from flask_app.models import report, user, city , updates
 from flask import flash
 
+# ---------------------------------------------------
+# "City" CLASS
 class City:
     def __init__( self , data ):
         self.id = data['id']
-        self.city_name = data['name']
+        self.city_name = data['city_name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.reports = []
 
+# ---------------------------------------------------
+# Save CITY
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO cities (name) VALUES(%(name)s);"
+        query = "INSERT INTO cities (city_name) VALUES(%(city_name)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
     
-    
+
+# ---------------------------------------------------
+# GET ALL CITIES
     @classmethod
     def cities(cls):
         query = "SELECT * FROM cities;"
@@ -26,7 +30,9 @@ class City:
         for city in results:
             cities.append(cls(city))
         return cities
-    
+
+# ---------------------------------------------------
+# GET CITY BY City ID
     @classmethod
     def city_with_reports(cls, id):
         query  = "SELECT * FROM cities LEFT JOIN reports ON reports.city_id = cities.id WHERE cities.id = %(id)s;"
