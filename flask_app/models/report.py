@@ -1,20 +1,22 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import city, user
-import re
-EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask import flash
 
+# ---------------------------------------------------
+# "Report" CLASS
 class Report:
     def __init__( self , data ):
         self.id = data['id']
         self.city = data['city']
-        self.what_happened = data['what']
+        self.what_happened = data['what_happened']
         self.location = data['location']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.city_id = data['city_id']
         self.user_id = data['user_id']
         
+# ---------------------------------------------------
+# GET ALL REPORTS Joins with USERS and CITIES
     @classmethod
     def reports_with_users(cls):
         query = """
@@ -46,11 +48,15 @@ class Report:
             reports.append(this_report)
         return reports
     
+# ---------------------------------------------------
+# Save REPORT
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO reports (what, location, city_id, user_id) VALUES(%(what)s, %(location)s, %(city_id)s, %(user_id)s)"
+        query = "INSERT INTO reports (what_happened, location, city_id, user_id) VALUES(%(what_happened)s, %(location)s, %(city_id)s, %(user_id)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
-    
+
+# ---------------------------------------------------
+#GET REPORT BY ID
     @classmethod
     def one(cls, id):
         query  = "SELECT * FROM reports WHERE id = %(id)s;"
@@ -58,22 +64,29 @@ class Report:
         
         return cls(results[0])
     
+# ---------------------------------------------------
+# UPDATE REPORT
     @classmethod
     def update(cls,data):
         query = """UPDATE reports 
-               SET what=%(what)s,location=%(location)s, updated_at =NOW()
+               SET what_happened =%(what_happened )s,location=%(location)s, updated_at =NOW()
                 WHERE (id = %(id)s);"""
         return connectToMySQL('communityOnAir').query_db(query,data) 
+
+# ---------------------------------------------------
+# DELETE REPORT
 
     @classmethod
     def delete(cls, id):
         query  = "DELETE FROM reports WHERE id = %(id)s;"
         return connectToMySQL('communityOnAir').query_db(query, id)
 
+# ---------------------------------------------------
+# VALIDATION
     @staticmethod
     def valid(report):
         valid=True
-        if len(report['what']) < 5:
+        if len(report['what_happened ']) < 5:
             flash("What happened must be at least 5 characters","report")
             valid=False
         if len(report['location']) < 3:
