@@ -58,7 +58,7 @@ class Report:
 # ---------------------------------------------------
 #GET REPORT BY ID
     @classmethod
-    def one(cls, id):
+    def get_one(cls, id):
         query  = "SELECT * FROM reports WHERE id = %(id)s;"
         results = connectToMySQL('communityOnAir').query_db(query, id)
         
