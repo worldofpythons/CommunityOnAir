@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import report, user, city , updates
+from flask_app.models import report, user, city , update
 from flask import flash
 
 # ---------------------------------------------------
