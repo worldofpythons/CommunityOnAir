@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -----LINK WITH CSS FILE----- -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_create_and_update_.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
     <title>Create</title>
@@ -23,11 +23,39 @@
             <p>Welcome {{user.name}}</p>
             {%endfor%}
             <ul class="nav-links">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/city">Find your city</a></li>
-                <li><a href="/report">Report</a></li>
+                <li><a href="/home">Home</a></li>|
+                <li><a href="/city">Find your city</a></li>|
+                <li><a href="/create">Report</a></li>|
                 <li><a href="/logout">Logout</a></li>
             </ul>
+        </div>
+    </div>
+
+    <div class="bottom_section">
+        <div class="form_container">
+            <form action="/" method="post" class="form">
+                <h2 class="head_text">Report</h2>
+                <div class="form_group">
+                    <label for="resource"><strong>City:</strong></label>
+                    <input type="text" name="city" id="city" size="33">
+                </div>
+                <div class="form_group">
+                    <label for="fact"><strong>What happened:</strong></label>
+                    <textarea name="what_happened" id="what_happened" rows="7" cols="32"></textarea>
+                </div>
+                <div class="form_group">
+                    <label for="resource"><strong>Location:</strong></label>
+                    <input type="text" name="location" id="location" size="33">
+                </div>
+                <div class="form_group">
+                    <label for="resource"><strong>Image:</strong></label>
+                    <input type="file" name="image" id="image" accept="image/*">
+                </div>
+                <div class="two_buttons">
+                    <a href="/" class="cancel_button">Cancel</a>
+                    <input type="submit" value="Create" class="create_button">
+                </div>
+            </form>                
         </div>
     </div>
 </body>

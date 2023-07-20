@@ -1,5 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+
 }
 
 .nav {
@@ -9,7 +11,7 @@ body {
     justify-content: space-between;
     text-align: right;
     padding-left: 20px;
-    margin: 20px;
+    margin: 0px;
     padding: 20px solid;
     color: #ffffff;
 }
@@ -21,8 +23,9 @@ ul {
 a {
     color: #ffffff;
     text-decoration: none;
-    margin-right: 20px;
+    margin: 10px;
 }
+
 
 .nav-links {
     display: flex;

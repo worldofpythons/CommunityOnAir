@@ -43,10 +43,10 @@ def login():
     user = User.get_by_email({"email":request.form['email']})
     if not user:
         flash("Invalid Email","login")
-        return redirect('/dashboard')
+        return redirect('/')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash("Invalid Password","login")
-        return redirect('/dashboard')
+        return redirect('/')
     session['user_id'] = user.id
     return redirect('/home')
 
