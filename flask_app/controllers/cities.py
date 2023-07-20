@@ -5,12 +5,12 @@ from flask_app.models import user, report, city
 
 # ---------------------------------------------------
 # Show all Cities
-@app.route('/city')
-def show_all_cities():
-    if 'id' not in session:
-        return redirect ('/logout')
-    data = {"id": session['id']}
-    return render_template('city.html', user= user.User.get_by_id(data), reports= report.Report.reports_with_users(), cities=city.City.all_cities())
+# @app.route('/city')
+# def show_all_cities():
+#     if 'id' not in session:
+#         return redirect ('/logout')
+#     data = {"id": session['id']}
+#     return render_template('city.html', user= user.User.get_by_id(data), reports= report.Report.reports_with_users(), cities=city.City.all_cities())
 
 
 # @app.route('/<display>/<int:id>')
