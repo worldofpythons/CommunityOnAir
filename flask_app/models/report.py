@@ -10,10 +10,13 @@ class Report:
         self.city = data['city']
         self.what_happened = data['what_happened']
         self.location = data['location']
+        self.image = data['image']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.city_id = data['city_id']
         self.user_id = data['user_id']
+        self.reporter = None
+        self.updates =[]
         
 # ---------------------------------------------------
 # GET ALL REPORTS Joins with USERS and CITIES
@@ -51,7 +54,7 @@ class Report:
 # ---------------------------------------------------
 # Save REPORT
     @classmethod
-    def save(cls, data):
+    def save_report(cls, data):
         query = "INSERT INTO reports (what_happened, location, city_id, user_id) VALUES(%(what_happened)s, %(location)s, %(city_id)s, %(user_id)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
 
@@ -67,7 +70,7 @@ class Report:
 # ---------------------------------------------------
 # UPDATE REPORT
     @classmethod
-    def update(cls,data):
+    def update_report(cls,data):
         query = """UPDATE reports 
                SET what_happened =%(what_happened )s,location=%(location)s, updated_at =NOW()
                 WHERE (id = %(id)s);"""
@@ -77,14 +80,14 @@ class Report:
 # DELETE REPORT
 
     @classmethod
-    def delete(cls, id):
+    def delete_report(cls, id):
         query  = "DELETE FROM reports WHERE id = %(id)s;"
         return connectToMySQL('communityOnAir').query_db(query, id)
 
 # ---------------------------------------------------
 # VALIDATION
     @staticmethod
-    def valid(report):
+    def valid_report(report):
         valid=True
         if len(report['what_happened ']) < 5:
             flash("What happened must be at least 5 characters","report")

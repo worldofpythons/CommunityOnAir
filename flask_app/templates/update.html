@@ -23,12 +23,32 @@
             <p>Welcome {{user.name}}</p>
             {%endfor%}
             <ul class="nav-links">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/city">Find your city</a></li>
-                <li><a href="/report">Report</a></li>
+                <li><a href="/home">Home</a></li>|
+                <li><a href="/city">Find your city</a></li>|
+                <li><a href="/create">Report</a></li>|
                 <li><a href="/logout">Logout</a></li>
             </ul>
-            </div>
+        </div>
     </div>
+
+    <div class="bottom_section">
+        <h1>TEST CITY</h1>
+        <p>TEST REPORT INFO</h1>
+        <p>TEST POSTED BY:</p>        
+        <div class="form_update_container">
+            <form action="/" method="post" class="form">
+                <h2 class="head_text">Update the situation</h2>
+                <div class="form_group">
+                    <label for="fact"><strong>Update details:</strong></label>
+                    <input type="text" name="what_happened" id="what_happened" size="33">
+                </div>
+                <div class="two_buttons">
+                    <a href="/" class="cancel_button">Cancel</a>
+                    <input type="submit" value="Submit" class="submit_button">
+                </div>
+            </form>                   
+        </div>
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,181 @@
+/* TOP SECTION */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+.nav {
+    background-color: rgb(128, 190, 197);
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    padding-left: 20px;
+    margin: 0px;
+    padding: 20px solid;
+    color: #ffffff;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 10px;
+}
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+}
+.top_right {
+    display: table-column;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+.test_user_name {
+    padding-right: 20px;
+}
+
+/* --------------------------------------------------- */
+
+/* BUTTONS */
+.create_button {
+    color: #000000;
+    margin-top: 25px;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    background:  rgb(128, 190, 197);
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px 1px #000000;
+}
+.update_button {
+    color: #000000;
+    margin-top: 25px;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    background:  rgb(128, 197, 129);
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px 1px #000000;
+}
+.cancel_button {
+    color: #000000;
+    margin-top: 25px;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    background: #cfa6e1;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    box-shadow: 2px 2px 2px 1px #000000;
+}
+.submit_button {
+    color: #000000;
+    margin-top: 25px;
+    padding: 5px 10px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    background: #e985b2;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    box-shadow: 2px 2px 2px 1px #000000;
+    font-size: 15px;
+}
+/* --------------------------------------------------- */
+
+/* BOTTOM SECTION */
+.bottom_section {
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.form_container {
+    margin-top: 20px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    height: 460px;
+    color: #7f7777;
+    width: 530px;
+    border: 3px solid #7f7777;
+    border-radius: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+.form_update_container {
+    margin-top: 20px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    height: 250px;
+    color: #7f7777;
+    width: 450px;
+    border: 3px solid #7f7777;
+    border-radius: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+h2 {
+    font-size: 40px;
+    font-family: cursive;
+    color: rgb(128, 190, 197);
+    text-align: left;
+}
+.form_group {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;  
+}
+.form_group input {
+    margin-left: 40px;
+    border: 2px solid #7f7777;
+    background-color: #ffffff;
+}
+.form_group textarea {
+    margin-left: 40px;
+    border: 2px solid #7f7777;
+}
+.alert {
+    color: #b04f4f;
+}
+.two_buttons {
+    text-align: right;
+}
+
+.bottom_section h1 {
+    color: #605c96;
+}
