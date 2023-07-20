@@ -15,7 +15,7 @@ class City:
 # ---------------------------------------------------
 # Save CITY
     @classmethod
-    def save(cls, data):
+    def save_city(cls, data):
         query = "INSERT INTO cities (city_name) VALUES(%(city_name)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
     
@@ -23,7 +23,7 @@ class City:
 # ---------------------------------------------------
 # GET ALL CITIES
     @classmethod
-    def cities(cls):
+    def all_cities(cls):
         query = "SELECT * FROM cities;"
         results = connectToMySQL('communityOnAir').query_db(query)
         cities = []

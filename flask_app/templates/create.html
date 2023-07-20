@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_create_and_update_.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
-    <title>Create</title>
+    <title>Edit</title>
 </head>
 <body>
 
     <div class="nav">
-    <h1>TEST HEAD</h1>        
+        <h1>COMMUNITY <span>ON-AIR</span></h1>       
         {%for city in cities%}
         <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
         {%endfor%}
@@ -37,7 +37,9 @@
                 <h2 class="head_text">Report</h2>
                 <div class="form_group">
                     <label for="resource"><strong>City:</strong></label>
-                    <input type="text" name="city" id="city" size="33">
+                    <select name="city" id="city">
+                        <option>TEST CITY NAME</option>
+                    </select>
                 </div>
                 <div class="form_group">
                     <label for="fact"><strong>What happened:</strong></label>
@@ -53,7 +55,7 @@
                 </div>
                 <div class="two_buttons">
                     <a href="/" class="cancel_button">Cancel</a>
-                    <input type="submit" value="Create" class="create_button">
+                    <input type="submit" value="Update" class="update_button">
                 </div>
             </form>                
         </div>

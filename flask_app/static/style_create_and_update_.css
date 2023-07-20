@@ -4,6 +4,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
 }
+h1{
+    font-size: 40px;
+}
+h1 span {
+    color: #b04f4f;
+}
 .nav {
     background-color: rgb(128, 190, 197);
     height: 85px;
@@ -123,37 +129,32 @@ a {
     display:grid;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 0px;
+    background-image: linear-gradient(to bottom, transparent, rgb(128, 190, 197)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 630px;
 }
 .form_container {
-    margin-top: 20px;
     display:flex;
     justify-content: center;
     text-align: center;
-    height: 460px;
-    color: #7f7777;
-    width: 530px;
-    border: 3px solid #7f7777;
+    height: 480px;
+    width: 500px;
+    color: #5b5656;
     border-radius: 5px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-} 
-.form_update_container {
-    margin-top: 20px;
-    display:flex;
-    justify-content: center;
-    text-align: center;
-    height: 250px;
-    color: #7f7777;
-    width: 450px;
-    border: 3px solid #7f7777;
-    border-radius: 5px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(210, 220, 222);
+    opacity: 0.8;
 } 
 h2 {
-    font-size: 40px;
-    font-family: cursive;
-    color: rgb(128, 190, 197);
+    font-size: 50px;
     text-align: left;
+    font-family:monospace;
+    color: #877b7b;
+}
+label {
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .form_group {
     display: flex;
@@ -162,12 +163,17 @@ h2 {
 }
 .form_group input {
     margin-left: 40px;
-    border: 2px solid #7f7777;
+    border: 2px solid #000000;
     background-color: #ffffff;
+}
+.form_group select {
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    width: 260px;
 }
 .form_group textarea {
     margin-left: 40px;
-    border: 2px solid #7f7777;
+    border: 2px solid #000000;
 }
 .alert {
     color: #b04f4f;
@@ -178,4 +184,16 @@ h2 {
 
 .bottom_section h1 {
     color: #605c96;
+}
+
+.form_update_container {
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    height: 340px;
+    width: 610px;
+    color: #5b5656;
+    border-radius: 5px;
+    background-color: rgb(210, 220, 222);
+    opacity: 0.8;
 }

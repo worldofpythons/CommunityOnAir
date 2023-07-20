@@ -1,11 +1,21 @@
+/* TOP SECTION */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-
+    background-image: linear-gradient(to bottom, transparent, rgb(128, 190, 197)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 715px;
 }
-
+h1{
+    font-size: 40px;
+}
+h1 span {
+    color: #b04f4f;
+}
 .nav {
-    background-color: rgb(162, 191, 224);
+    background-color: rgb(128, 190, 197);
     height: 85px;
     display: flex;
     justify-content: space-between;
@@ -15,30 +25,25 @@ body {
     padding: 20px solid;
     color: #ffffff;
 }
-
 ul {
     list-style-type: none;
 }
-
 a {
     color: #ffffff;
     text-decoration: none;
     margin: 10px;
 }
-
-
 .nav-links {
     display: flex;
     justify-content: space-around;
-
 }
-
 .top_right {
     display: table-column;
     justify-content: space-between;
     padding-right: 20px;
 }
-
 .test_user_name {
     padding-right: 20px;
 }
+
+/* --------------------------------------------------- */
