@@ -6,7 +6,7 @@ from flask_app.models import user, report, city
 # ---------------------------------------------------
 # Show all Cities
 @app.route('/city')
-def show_all_city():
+def show_all_cities():
     if 'id' not in session:
         return redirect ('/logout')
     data = {"id": session['id']}
