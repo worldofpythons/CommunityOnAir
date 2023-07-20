@@ -1,0 +1,10 @@
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Pallet Town");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Viridian");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Pewter City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Cerulean City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Vermillion City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Lavender Town");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Celadon City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Saffron City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Fuchsia City");
+INSERT INTO communityOnAir.cities (city_name) VALUES ("Cinnabar Island");

@@ -1,16 +1,18 @@
 from flask import render_template, request, redirect, session, flash
 from flask_app import app
-from flask_app.models import user, report, city
+from flask_app.models.user import User
+from flask_app.models.report import Report
+from flask_app.models.city import City
 
 
 # ---------------------------------------------------
 # Show all Cities
 @app.route('/city')
 def city():
-    if 'id' not in session:
+    if 'user_id' not in session:
         return redirect ('/logout')
-    data = {"id": session['id']}
-    return render_template('city.html', user= user.User.get_one(data), cities = city.City.cities(), reports= report.Report.reports_with_users())
+    data = {"id": session['user_id']}
+    return render_template('city_display.html', user= User.get_by_id(data), cities = City.cities())
 
 
 # @app.route('/<display>/<int:id>')
