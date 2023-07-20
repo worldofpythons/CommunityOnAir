@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -----LINK WITH CSS FILE----- -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_create_and_update_.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
-    <title>Edit an update</title>
+    <title>Update</title>
 </head>
 <body>
 
@@ -30,5 +30,25 @@
             </ul>
         </div>
     </div>
+
+    <div class="bottom_section">
+        <h1>TEST CITY NAME</span></h1>       
+        <p>TEST REPORT INFO</p>
+        <p>TEST POSTED BY:</p>        
+        <div class="form_update_container">
+            <form action="/" method="post" class="form">
+                <h2 class="head_text">Edit the situation</h2>
+                <div class="form_group">
+                    <label for="fact"><strong>Update details:</strong></label>
+                    <textarea name="what_happened" id="what_happened" rows="5" cols="45"></textarea>
+                </div>
+                <div class="two_buttons">
+                    <a href="/" class="cancel_button">Cancel</a>
+                    <input type="submit" value="Submit" class="submit_button">
+                </div>
+            </form>                   
+        </div>
+    </div>
+
 </body>
 </html>
