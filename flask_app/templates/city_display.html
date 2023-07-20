@@ -8,17 +8,17 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
-    <title>Display</title>
+    <title>KANTO ON-AIR</title>
 </head>
 <body>
 
     <div class="nav">
-    <h1>TEST HEAD</h1>        
+    <h1>KANTO ON-AIR</h1>        
         {%for city in cities%}
         <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
         {%endfor%}
         <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
+            <p class="test_user_name">Welcome, {{user.name}}</p>            
             {% for user in users %}
             <p>Welcome {{user.name}}</p>
             {%endfor%}
@@ -31,13 +31,10 @@
         </div>
     </div>
 
-    {{cities.name}}
-    {% for report in cities.reports %}
-        <p>{{report.what}} <a href="/{{cities.name}}/{{cities.id}}/show/{{report.id}}">View</a></p>
-        {%if report.user_id == session.id%}
-            <P><a href="/delete/{{report.id}}">Delete</a></P>
-            <P><a href="/Edit/{{cities.name}}/{{report.id}}">Edit</a></P>
-        {%endif%}
+    {% for city in cities %}
+    <div class="city">
+        <a style="color: rgb(162, 191, 224);" href="/city/{{city.id}}">{{city.city_name}}</a>
+    </div>
     {%endfor%}
 
 
