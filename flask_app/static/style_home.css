@@ -47,3 +47,10 @@ a {
 }
 
 /* --------------------------------------------------- */
+
+/* BOTTOM SECTION */
+.bottom_section {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
