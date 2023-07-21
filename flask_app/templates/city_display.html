@@ -30,7 +30,15 @@
     </div>
 
     <h1>{{city.city_name}}</h1>
-   
+
+    {% for report in reports %}
+    <div class="report">
+        <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
+        <h2>{{report.what_happened}}</h2>
+        <p>{{report.name}}</p>
+    </div>
+    {% endfor %}
+
 
 
 </body>

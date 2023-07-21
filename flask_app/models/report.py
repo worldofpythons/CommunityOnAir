@@ -1,6 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import city, user
 from flask import flash
+from werkzeug.utils import secure_filename
+import os
 
 # ---------------------------------------------------
 # "Report" CLASS
@@ -18,6 +20,36 @@ class Report:
         self.reporter = None
         self.updates =[]
         
+# ---------------------------------------------------
+# GET REPORTS BY CITY ID cities and id
+    @classmethod
+    def get_reports_by_city_id(cls, data):
+        query = "SELECT * FROM reports LEFT JOIN users ON users_id = users.id WHERE cities_id = %(id)s;"
+        results = connectToMySQL('communityOnAir').query_db(query, data)
+        reports = []
+        print(results)
+        for report in results:
+            this_report = cls(report)
+            user_data = {
+                "id": report['users.id'],
+                "name": report['name'],
+                "email": report['email'],
+                "password": "",
+                "created_at": report['users.created_at'],
+                "updated_at": report['users.updated_at']
+            }
+            this_report.reporter = user.User(user_data)
+            reports.append(report)
+        print(reports)
+        return reports
+            
+    # def get_reports_by_city_id(cls, data):
+    #     query = "SELECT * FROM reports WHERE cities_id = %(id)s;"
+    #     results = connectToMySQL('communityOnAir').query_db(query, data)
+    #     reports = []
+    #     for report in results:
+    #         reports.append(cls(report))
+    #     return reports
 # ---------------------------------------------------
 # GET ALL REPORTS Joins with USERS and CITIES
     @classmethod
