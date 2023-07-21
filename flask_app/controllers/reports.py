@@ -3,6 +3,8 @@ from flask_app import app
 from flask_app.models.city import city
 from flask_app.models.user import User
 from flask_app.models.report import Report
+from werkzeug.utils import secure_filename
+import os
 
 
 # ---------------------------------------------------
@@ -34,7 +36,7 @@ def city_display(city_id, id):
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data))
+    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_city_id(city_data))
 # reports= report.Report.reports_with_users()
 
 
@@ -63,17 +65,22 @@ def create_report():
 
 @app.route('/create/process', methods=['POST'])
 def process():
-    print(request.form['image'])
+
     if 'user_id' not in session:
         return redirect('/logout')
     if not Report.valid_report(request.form):
         return redirect('/create')
+    image = request.files['image']
+    if image.filename == "":
+        flash("Please select a file")
+        return redirect('/create')
+    image.save(os.path.join(app.config['IMAGE_UPLOADS'], image.filename))
     data = {
         'what_happened': request.form['what_happened'],
         'cities_id': request.form['city_id'],
         'users_id': session['user_id'],
         'location': request.form['location'],
-        'image': request.form['image']
+        'image': image.filename
     }
     Report.save_report(data)
     return redirect('/home')
