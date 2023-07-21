@@ -14,11 +14,9 @@
 
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>            
-        {%for city in cities%}
-        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-        {%endfor%}
+        
         <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
+            <p class="test_user_name">Welcome, {{user.name}}</p>            
             {% for user in users %}
             <p>Welcome {{user.name}}</p>
             {%endfor%}
@@ -31,14 +29,8 @@
         </div>
     </div>
 
-    {{cities.name}}
-    {% for report in cities.reports %}
-        <p>{{report.what}} <a href="/{{cities.name}}/{{cities.id}}/show/{{report.id}}">View</a></p>
-        {%if report.user_id == session.id%}
-            <P><a href="/delete/{{report.id}}">Delete</a></P>
-            <P><a href="/Edit/{{cities.name}}/{{report.id}}">Edit</a></P>
-        {%endif%}
-    {%endfor%}
+    <h1>{{city.city_name}}</h1>
+   
 
 
 </body>

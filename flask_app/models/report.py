@@ -13,8 +13,8 @@ class Report:
         self.image = data['image']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.city_id = data['city_id']
-        self.user_id = data['user_id']
+        self.cities_id = data['cities_id']
+        self.users_id = data['users_id']
         self.reporter = None
         self.updates =[]
         
@@ -55,7 +55,7 @@ class Report:
 # Save REPORT
     @classmethod
     def save_report(cls, data):
-        query = "INSERT INTO reports (what_happened, location, city_id, user_id) VALUES(%(what_happened)s, %(location)s, %(city_id)s, %(user_id)s);"
+        query = "INSERT INTO reports (what_happened, cities_id, users_id, location, image) VALUES(%(what_happened)s, %(cities_id)s, %(users_id)s, %(location)s, %(image)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
 
 # ---------------------------------------------------
@@ -89,7 +89,7 @@ class Report:
     @staticmethod
     def valid_report(report):
         valid=True
-        if len(report['what_happened ']) < 5:
+        if len(report['what_happened']) < 5:
             flash("What happened must be at least 5 characters","report")
             valid=False
         if len(report['location']) < 3:

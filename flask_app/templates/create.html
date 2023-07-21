@@ -8,20 +8,15 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_create_and_update_.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
-    <title>Edit</title>
+    <title>Create</title>
 </head>
 <body>
 
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>       
-        {%for city in cities%}
-        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-        {%endfor%}
+        
         <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
-            {% for user in users %}
-            <p>Welcome {{user.name}}</p>
-            {%endfor%}
+            <p class="test_user_name">Welcome, {{user.name}}</p>
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
@@ -33,29 +28,31 @@
 
     <div class="bottom_section">
         <div class="form_container">
-            <form action="/" method="post" class="form">
+            <form action="/create/process" method="post" class="form">
                 <h2 class="head_text">Report</h2>
                 <div class="form_group">
-                    <label for="resource"><strong>City:</strong></label>
-                    <select name="city" id="city">
-                        <option>TEST CITY NAME</option>
+                    <label for="city_id"><strong>City:</strong></label>
+                    <select name="city_id" id="city_id">
+                        {% for city in cities %}
+                        <option value="{{city.id}}">{{city.city_name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form_group">
-                    <label for="fact"><strong>What happened:</strong></label>
+                    <label for="what_happened"><strong>What happened:</strong></label>
                     <textarea name="what_happened" id="what_happened" rows="7" cols="32"></textarea>
                 </div>
                 <div class="form_group">
-                    <label for="resource"><strong>Location:</strong></label>
+                    <label for="location"><strong>Location:</strong></label>
                     <input type="text" name="location" id="location" size="33">
                 </div>
                 <div class="form_group">
-                    <label for="resource"><strong>Image:</strong></label>
+                    <label for="image"><strong>Image:</strong></label>
                     <input type="file" name="image" id="image" accept="image/*">
                 </div>
                 <div class="two_buttons">
                     <a href="/" class="cancel_button">Cancel</a>
-                    <input type="submit" value="Update" class="update_button">
+                    <input type="submit" value="Create" class="create_button">                
                 </div>
             </form>                
         </div>

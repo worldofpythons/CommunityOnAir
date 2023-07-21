@@ -14,14 +14,9 @@
 
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>          
-        {%for city in cities%}
-        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-        {%endfor%}
-        <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
-            {% for user in users %}
-            <p>Welcome {{user.name}}</p>
-            {%endfor%}
+            <div class="top_right">
+                <p class="test_user_name">Welcome, {{user.name}}</p>            
+            
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|

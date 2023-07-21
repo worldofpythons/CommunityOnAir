@@ -17,7 +17,11 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    if 'user_id' not in session:
+        return redirect ('/')
+    data = {"id": session['user_id']}
+    return render_template('home.html', user= User.get_by_id(data), cities = City.all_cities())
+
 
 # ---------------------------------------------------
 # USER REGISTER
