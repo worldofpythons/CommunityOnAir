@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -----LINK WITH CSS FILE----- -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_show_each_city.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
 
     <title>Find your city</title>
@@ -16,9 +16,8 @@
     <!-- DISPLAY ALL CITIES -->
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>
-
         <div class="top_right">
-            <p class="test_user_name">Welcome, {{user.name}}</p>
+            <p class="user_name">Welcome, {{user.name}}</p>
             {% for user in users %}
             <p>Welcome {{user.name}}</p>
             {%endfor%}
@@ -30,32 +29,84 @@
             </ul>
         </div>
     </div>
+    
+    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->
+   
+    <div class="bottom_section">
+        <h1 class="head_city_name">{{city.city_name}}</h1> 
+        <div clas="city"></div>
+            <div class="report">
+                <div class="each_report">
+                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
+                </div>
+                <div class="each_report">
+                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
+                    <p class="reporter">By: Tanapa</p>
+                </div>
+                <div class="each_report">
+                    <a href="/city/" class="view_button">View</a>
+                    <a href="/edit/" class="edit_button">Edit</a>
+                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                </div>
+            </div>
 
-    <h1>{{city.city_name}}</h1>
+            <div class="report">
+                <div class="each_report">
+                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
+                </div>
+                <div class="each_report">
+                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
+                    <p class="reporter">By: Tanapa</p>
+                </div>
+                <div class="each_report">
+                    <a href="/city/" class="view_button">View</a>
+                    <a href="/edit/" class="edit_button">Edit</a>
+                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                </div>
+            </div>
 
-    {% for report in reports %}
-    <div class="report">
-        <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
-        <h2>{{report.what_happened}}</h2>
-        <p>{{report.name}}</p>
+            <div class="report">
+                <div class="each_report">
+                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
+                </div>
+                <div class="each_report">
+                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
+                    <p class="reporter">By: Tanapa</p>
+                </div>
+                <div class="each_report">
+                    <a href="/city/" class="view_button">View</a>
+                    <a href="/edit/" class="edit_button">Edit</a>
+                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                </div>
+            </div>
+            
+    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->
+
+
+            {% for report in reports %}
+            <div class="reportt">
+                <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
+                <h3>{{report.what_happened}}</h3>
+                <p>By: {{report.name}}</p>
+            </div>
+            <!-- -----SHOW ONLY VIEW BUTTON IF THE Report WAS NOT POSTED BY LOGGED-IN USER ----- -->
+            {% if session['user_id'] != report.users_id %}
+            <div class="v_button">
+                <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+            </div>
+            {% endif %}
+
+            <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
+            <div class="three_buttons">
+                {% if session['user_id'] == report.users_id %}
+                <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+                <a href="/edit/" class="edit_button">Edit</a>
+                <a href="/delete/fact/" class="delete_button">Delete</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    <!-- -----SHOW ONLY VIEW BUTTON IF THE Report WAS NOT POSTED BY LOGGED-IN USER ----- -->
-    {% if session['user_id'] != report.users_id %}
-    <div class="v_button">
-        <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
-    </div>
-    {% endif %}
-
-    <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
-    <div class="three_buttons">
-        {% if session['user_id'] == report.users_id %}
-        <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
-        <a href="/edit/" class="edit_button">Edit</a>
-        <a href="/delete/fact/" class="delete_button">Delete</a>
-        {% endif %}
-    </div>
-    {% endfor %}
-
 
 
 </body>
