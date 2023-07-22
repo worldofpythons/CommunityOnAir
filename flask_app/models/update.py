@@ -8,8 +8,7 @@ from flask_app.models import user, report
 class Update:
     def __init__( self, data):
         self.id = data['id']
-        self.what_happened = data['what_happened']
-        self.location = data['location']
+        self.details = data['details']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.users_id = data['users_id']
@@ -21,11 +20,8 @@ class Update:
     @staticmethod
     def is_valid_update(data):
         is_valid = True
-        if len(data['what_happened']) < 3:
-            flash("What happened must be at least 3 characters.","update")
-            is_valid = False
-        if len(data['location']) < 3:
-            flash("Location must be at least 3 characters.","update")
+        if len(data['details']) < 3:
+            flash("Details must be at least 3 characters.","update")
             is_valid = False
         return is_valid
     
@@ -34,7 +30,7 @@ class Update:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO updates (what_happened, location, users_id, report_id) VALUES(%(what_happened)s, %(location)s, %(users_id)s, %(report_id)s);"
+        query = "INSERT INTO updates (details, users_id, report_id) VALUES(%(details)s, %(users_id)s, %(report_id)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
     
 # ---------------------------------------------------
@@ -64,7 +60,7 @@ class Update:
 
     @classmethod
     def update(cls, data):
-        query = "UPDATE updates SET what_happened = %(what_happened)s, location = %(location)s, updated_at = NOW() WHERE id = %(id)s;"
+        query = "UPDATE updates SET details = %(details)s, updated_at = NOW() WHERE id = %(id)s;"
         result = connectToMySQL('communityOnAir').query_db(query, data)
         return result
 

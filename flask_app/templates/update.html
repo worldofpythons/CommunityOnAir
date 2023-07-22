@@ -13,15 +13,9 @@
 <body>
 
     <div class="nav">
-    <h1>TEST HEAD</h1>        
-        {%for city in cities%}
-        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-        {%endfor%}
+        <h1>COMMUNITY <span>ON-AIR</span></h1>        
         <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
-            {% for user in users %}
-            <p>Welcome {{user.name}}</p>
-            {%endfor%}
+            <p class="test_user_name">Welcome, {{user.name}}</p>         
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
@@ -32,16 +26,21 @@
     </div>
 
     <div class="bottom_section">
-        <h1>TEST CITY NAME</span></h1>       
-        <p>TEST REPORT INFO</p>
-        <p>TEST POSTED BY:</p>        
+        <h1>{{report.city_name}}</span></h1>       
+        <p>{{report.what_happened}}</p>
+        <p>POSTED BY: {{report.name}}</p>        
         <div class="form_update_container">
-            <form action="/" method="post" class="form">
+            <form action="/create/update/process" method="post" class="form">
                 <h2 class="head_text">Update the situation</h2>
                 <div class="form_group">
-                    <label for="fact"><strong>Update details:</strong></label>
-                    <textarea name="what_happened" id="what_happened" rows="5" cols="45"></textarea>
+                    <label for="details"><strong>Update details:</strong></label>
+                    <textarea name="details" id="details" rows="5" cols="45"></textarea>
                 </div>
+                <div class="form_group">
+                <div class="form_group">
+                    <input type="hidden" id="report_id" name="report_id" value="{{report.id}}">
+                    <input type="hidden" id="users_id" name="users_id" value="{{session['user_id']}}">
+                </div>                </div>
                 <div class="two_buttons">
                     <a href="/" class="cancel_button">Cancel</a>
                     <input type="submit" value="Submit" class="submit_button">

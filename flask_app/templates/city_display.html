@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,17 @@
     <!-- -----LINK WITH CSS FILE----- -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
-    
-    <title>Display</title>
-</head>
-<body>
 
+    <title>Find your city</title>
+</head>
+
+<body>
+    <!-- DISPLAY ALL CITIES -->
     <div class="nav">
-        <h1>COMMUNITY <span>ON-AIR</span></h1>            
-        
+        <h1>COMMUNITY <span>ON-AIR</span></h1>
+
         <div class="top_right">
-            <p class="test_user_name">Welcome, {{user.name}}</p>            
+            <p class="test_user_name">Welcome, {{user.name}}</p>
             {% for user in users %}
             <p>Welcome {{user.name}}</p>
             {%endfor%}
@@ -37,10 +39,25 @@
         <h2>{{report.what_happened}}</h2>
         <p>{{report.name}}</p>
     </div>
+    <!-- -----SHOW ONLY VIEW BUTTON IF THE Report WAS NOT POSTED BY LOGGED-IN USER ----- -->
+    {% if session['user_id'] != report.users_id %}
+    <div class="v_button">
+        <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+    </div>
+    {% endif %}
+
+    <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
+    <div class="three_buttons">
+        {% if session['user_id'] == report.users_id %}
+        <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+        <a href="/edit/" class="edit_button">Edit</a>
+        <a href="/delete/fact/" class="delete_button">Delete</a>
+        {% endif %}
+    </div>
     {% endfor %}
 
 
 
 </body>
-</html>
 
+</html>
