@@ -9,7 +9,6 @@ import os
 class Report:
     def __init__( self , data ):
         self.id = data['id']
-        self.city = data['city']
         self.what_happened = data['what_happened']
         self.location = data['location']
         self.image = data['image']
