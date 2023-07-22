@@ -18,7 +18,7 @@
         <h1><a href="/{{city.city_name}}/{{city.id}}">{{city.name}}</a></h1>
         {%endfor%}
         <div class="top_right">
-            <p class="test_user_name">TEST USER NAME</p>            
+            <p class="test_user_name">Welcome, {{user.name}}</p>           
             {% for user in users %}
             <p>Welcome {{user.name}}</p>
             {%endfor%}
@@ -30,18 +30,30 @@
             </ul>
         </div>
     </div>
+    <!-- Report Page to show all information about the report and provide updates -->
+    <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
+    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="update_button">Update</a>
+    <h2>Posted By: {{report.name}}</h2>
+    <h1>{{report.city_name}}</h1>
+    <p>What what_happened:</p>
+    <p>{{report.what_happened}}</p>
+    <p>Location:</p>
+    <p>{{report.location}}</p>
+    <p>When: </p>
+    <p>{{report['cities.created_at']}}</p>
 
-    <h1>{{cityy}}</h1>
-    <p>What Happened: {{report.what}}</p>
-    <p>Location: {{report.location}}</p>
-    <p>When: {{report.updated_at.strftime("%b %d %y")}}</p>
-    {% if report.user_id == session.id%}
-        <P><a href="/delete/{{report.id}}">Delete</a></P>
-        <P><a href="/Edit/{{cities.name}}/{{report.id}}">Edit</a></P>
-    {%endif%}
+    
+        <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
+        <div class="three_buttons">
+            {% if session['user_id'] == report.users_id %}
+            <a href="/edit/" class="edit_button">Edit</a>
+            <a href="/delete/fact/" class="delete_button">Delete</a>
+            {% endif %}
+        </div>
 
-    {%for report in cities.reports%}
-        {{}}
+
+
+
 
 
     

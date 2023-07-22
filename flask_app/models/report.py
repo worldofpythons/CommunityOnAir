@@ -23,8 +23,42 @@ class Report:
 # ---------------------------------------------------
 # GET REPORTS BY CITY ID cities and id
     @classmethod
-    def get_reports_by_city_id(cls, data):
-        query = "SELECT * FROM reports LEFT JOIN users ON users_id = users.id WHERE cities_id = %(id)s;"
+    def get_reports_by_reportid_cityInfo(cls, data):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id LEFT JOIN users ON users_id = users.id WHERE reports.id = %(id)s;"
+        results = connectToMySQL('communityOnAir').query_db(query, data)
+        reports = []
+        print(results)
+        for report in results:
+            this_report = cls(report)
+            user_data = {
+                "id": report['users.id'],
+                "name": report['name'],
+                "email": report['email'],
+                "password": "",
+                "created_at": report['users.created_at'],
+                "updated_at": report['users.updated_at']
+            }
+            this_report.reporter = user.User(user_data)
+            reports.append(report)
+
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            reports.append(report)
+        
+        return reports[0]
+            
+# ---------------------------------------------------
+# GET REPORTS BY Report ID and city name
+    @classmethod
+    def get_reports_by_report_id(cls, data):
+        query = "SELECT * FROM reports LEFT JOIN users ON users_id = users.id WHERE reports.id = %(id)s;"
         results = connectToMySQL('communityOnAir').query_db(query, data)
         reports = []
         print(results)
@@ -42,14 +76,9 @@ class Report:
             reports.append(report)
         print(reports)
         return reports
-            
-    # def get_reports_by_city_id(cls, data):
-    #     query = "SELECT * FROM reports WHERE cities_id = %(id)s;"
-    #     results = connectToMySQL('communityOnAir').query_db(query, data)
-    #     reports = []
-    #     for report in results:
-    #         reports.append(cls(report))
-    #     return reports
+
+
+
 # ---------------------------------------------------
 # GET ALL REPORTS Joins with USERS and CITIES
     @classmethod
