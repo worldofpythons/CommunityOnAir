@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -----LINK WITH CSS FILE----- -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_show_each_city.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
     
     <title>Show</title>
@@ -31,31 +31,36 @@
         </div>
     </div>
     <!-- Report Page to show all information about the report and provide updates -->
-    <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
-    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="update_button">Update</a>
-    <h2>Posted By: {{report.name}}</h2>
-    <h1>{{report.city_name}}</h1>
-    <p>What what_happened:</p>
-    <p>{{report.what_happened}}</p>
-    <p>Location:</p>
-    <p>{{report.location}}</p>
-    <p>When: </p>
-    <p>{{report['cities.created_at']}}</p>
+    <!-- <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"> -->
 
-    
-        <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
-        <div class="three_buttons">
-            {% if session['user_id'] == report.users_id %}
-            <a href="/edit/" class="edit_button">Edit</a>
-            <a href="/delete/fact/" class="delete_button">Delete</a>
-            {% endif %}
+    <div class="bottom_section">        
+        <div clas="city">
+            <h1 class="show_head_city_name">{{report.city_name}}</h1>
+            <p class="show_reporter">Posted By: {{report.name}}</p>            
+            <div class="show_report">
+                <div class="show_each_report">
+                    <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="show_cities_images">
+                    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="updatehere_button">Update here!</a>
+                </div>
+                <div class="show_each_report">
+                    <p><strong>What happened:</strong></p>
+                    <p>{{report.what_happened}}</p>
+                    <p><strong>Location:</strong></p>
+                    <p>{{report.location}}</p>
+                    <p><strong>When:</strong></p>
+                    <p>{{report['cities.created_at']}}</p>
+                </div>
+
+                <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE REPORT POSTED BY LOGGED-IN USER ----- -->
+                <div class="show_each_report">
+                    {% if session['user_id'] == report.users_id %}
+                    <a href="/edit/" class="edit_button">Edit</a>
+                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-
-
-
-
-
-
+    </div>
     
 </body>
 </html>
