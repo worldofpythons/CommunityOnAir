@@ -19,9 +19,7 @@
         {%endfor%}
         <div class="top_right">
             <p class="user_name">TEST USER NAME</p>            
-            {% for user in users %}
             <p>Welcome {{user.name}}</p>
-            {%endfor%}
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
@@ -33,28 +31,31 @@
 
     <div class="bottom_section">
         <div class="form_container">
-            <form action="/" method="post" class="form">
+            <form action="/update/{{report.id}}" method="post" class="form">
+                <input type="hidden" name="user_id" value="{{session.user_id}}">
                 <h2 class="head_text">Edit</h2>
                 <div class="form_group">
                     <label for="resource"><strong>City:</strong></label>
-                    <select name="city" id="city">
-                        <option>TEST CITY NAME</option>
+                    <select name="city">
+                        {% for city in cities %}
+                        <option value="{{city.id}}">{{city.city_name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form_group">
                     <label for="fact"><strong>What happened:</strong></label>
-                    <textarea name="what_happened" id="what_happened" rows="7" cols="32"></textarea>
+                    <textarea name="what_happened" value="{{report.what_happened}}" rows="7" cols="32"></textarea>
                 </div>
                 <div class="form_group">
                     <label for="resource"><strong>Location:</strong></label>
-                    <input type="text" name="location" id="location" size="33">
+                    <input type="text" name="location" value="{{report.location}}" size="33">
                 </div>
                 <div class="form_group">
                     <label for="resource"><strong>Image:</strong></label>
-                    <input type="file" name="image" id="image" accept="image/*">
+                    <input type="file" name="image" value="{{report.image}}" accept="image/*">
                 </div>
                 <div class="two_buttons">
-                    <a href="/" class="cancel_button">Cancel</a>
+                    <a href="/home" class="cancel_button">Cancel</a>
                     <input type="submit" value="Update" class="update_button">
                 </div>
             </form>                
