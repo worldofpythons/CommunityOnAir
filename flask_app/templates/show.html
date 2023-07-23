@@ -54,8 +54,8 @@
                 <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE REPORT POSTED BY LOGGED-IN USER ----- -->
                 <div class="show_each_report">
                     {% if session['user_id'] == report.users_id %}
-                    <a href="/edit" class="edit_button">Edit</a>
-                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                    <a href="/edit/{{report.id}}" class="edit_button">Edit</a>
+                    <a href="/delete/{{report.id}}" class="delete_button">Delete</a>
                     {% endif %}
                 </div>
             </div>
