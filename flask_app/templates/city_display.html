@@ -33,7 +33,7 @@
     <div class="bottom_section">
         <h1 class="head_city_name">{{city.city_name}}</h1> 
         {% for report in reports %}
-        <div clas="city">
+        <div class="city">
             <div class="report">
                 <div class="each_report">
                     <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="cities_images">
@@ -50,8 +50,8 @@
                 {% if session['user_id'] == report.users_id %}
                 <div class="each_report">
                     <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
-                    <a href="/edit/" class="edit_button">Edit</a>
-                    <a href="/delete/report/{{session['user_id']}}" class="delete_button">Delete</a>
+                    <a href="/edit/{{report.id}}" class="edit_button">Edit</a>
+                    <a href="/delete/{{report.id}}" class="delete_button">Delete</a>
                 </div>
                 {% endif %}
             </div>

@@ -132,7 +132,7 @@ class Report:
     @classmethod
     def update_report(cls,data):
         query = """UPDATE reports 
-               SET what_happened =%(what_happened )s,location=%(location)s, updated_at =NOW()
+               SET what_happened =%(what_happened)s, cities_id = %(cities_id)s, users_id = %(users_id)s, location=%(location)s, image= %(image)s, updated_at =NOW()
                 WHERE (id = %(id)s);"""
         return connectToMySQL('communityOnAir').query_db(query,data) 
 

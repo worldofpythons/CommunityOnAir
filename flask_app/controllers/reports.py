@@ -11,7 +11,7 @@ import os
 # Show All Reports
 @app.route('/home')
 def dashboard():
-    if 'id' not in session:
+    if 'user_id' not in session:
         return redirect ('/logout')
     data = {"id": session['id']}
     return render_template('home.html', user= User.get_by_id(data), cities = city.City.cities(), reports= Report.reports_with_users())
@@ -92,34 +92,35 @@ def process():
 
 @app.route('/edit/<int:id>')
 def edit(id):
-    if 'id' not in session:
+    if 'user_id' not in session:
         return redirect('/logout')
     user = User.get_by_id({"id":session['user_id']})
-    return render_template('edit.html', user=user, report=Report.reports_with_users({'id': id}))
+    Data = {"id": id}
+    return render_template('edit.html', user=user, report=Report.get_reports_by_reportid_cityInfo(Data),cities=city.City.all_cities())
 
-@app.route('/city/<city>/edit/<int:id>', methods=['POST'])
+@app.route('/update/<int:id>', methods=['POST'])
 def update(id):
     if 'user_id' not in session:
         return redirect('/logout')
     if not Report.valid_report(request.form):
-        return redirect(f'/edit/{id}')
+        return redirect(f'/edit/<int:id>')
     data = {
-        'id': id,
-        'user_id': session['user_id'],
-        'city': request.form['city'],
         'what_happened': request.form['what_happened'],
+        'cities_id': request.form['city'],
+        'users_id': session['user_id'],
         'location': request.form['location'],
-        'picture': request.form['picture']
+        'id': id,
+        'image': request.form['image']
     }
     Report.update_report(data)
-    return redirect('/show')
+    return redirect('/home')
 
 # ---------------------------------------------------
 # DELETE - USERS CAN DELETE THEIR FACTS
 
-@app.route('/delete/report/<int:id>')
+@app.route('/delete/<int:id>')
 def delete_report(id):
-    if 'id' not in session:
+    if 'user_id' not in session:
         return redirect('/logout')
     Report.delete_report({'id':id})
     return redirect('/home')
