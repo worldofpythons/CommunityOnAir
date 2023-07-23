@@ -7,6 +7,7 @@ body {
     background-position: center;
     background-size: cover;
     height: 715px;
+    background-attachment: fixed;
 }
 h1{
     font-size: 40px;
@@ -42,15 +43,111 @@ a {
     justify-content: space-between;
     padding-right: 20px;
 }
-.test_user_name {
-    padding-right: 20px;
+.user_name {
+    padding-right: 10px;
+    font-size: 18px;
+    color: #5e5e5e;
+    font-weight: bold;
 }
 
 /* --------------------------------------------------- */
 
 /* BOTTOM SECTION */
+
 .bottom_section {
     display:flex;
     justify-content: center;
     align-items: center;
+}
+.random_cities_top {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+}
+.random_cities_bottom {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+}
+.each_random_table {
+    height: 260px;
+    width: 320px;
+    border-radius: 10px;
+    background-color: rgb(210, 220, 222);
+    opacity: 0.9;
+    margin: 5px;
+    padding: 20px;
+}
+.each_two_reports {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.two_reports {
+    display: flex;
+    flex-direction: column;
+}
+.random_cities_images {
+    height: 80px;
+    width: 140px;
+    border-radius: 3px;
+}
+.reports {
+    color: #5b5656;
+    font-size: 15px;
+    margin: 0px;
+    padding-left: 10px;
+    font-family: monospace;
+}
+h3 {
+    margin: 0px;
+    /* padding-left: 10px; */
+    color: rgb(42, 115, 123);
+    /* text-shadow: 3px 1px #ffffff; */
+    background-color: #ffffff;
+    text-align: center;
+    opacity: 0.7;
+}
+/* --------------------------------------------------- */
+
+/* -----CITY PAGE----- */
+
+.all_cities_top {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.all_cities_bottom {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.each_city {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgb(210, 220, 222);
+    opacity: 0.9;
+    margin: 10px;
+}
+.cities_images {
+    height: 100px;
+    width: 200px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+.city_name {
+    color: #5b5656;
+    background-color: #ffffff;
+    font-size: 20px;
+    margin-top: 20px;
+    font-family: monospace;
 }

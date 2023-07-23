@@ -16,40 +16,42 @@ def dashboard():
     data = {"id": session['id']}
     return render_template('home.html', user= User.get_by_id(data), cities = city.City.cities(), reports= Report.reports_with_users())
 
-# ---------------------------------------------------
-#Home Page Route
-# @app.route('/home')
-# def dashboard():
-#     if 'user_id' not in session:
-#         return redirect ('/logout')
-#     data = {
-#         'user_id' : session['user_id']
-#         }
-#     return render_template('home.html', user= User.get_one(data), cities = City.cities())
 
 
 # ---------------------------------------------------
-# Show Reports by City
+@app.route('/city/reports/<int:city_id>')
+def each_city(city_id):
+    if 'user_id' not in session:
+        return redirect ('/logout')
+    data = {"id": session['user_id']}
+    city_data = {"id": city_id}
+    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
+
+
+
+
+# Show Reports by City - city display page
 @app.route('/city/reports/<int:city_id>/<int:id>')
 def city_display(city_id, id):
     if 'user_id' not in session:
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_city_id(city_data))
+    return render_template('show.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
 # reports= report.Report.reports_with_users()
 
 
 
-
-@app.route('/<city>/<int:id>/show/<int:iid>')
-def show_report(cityy,idd,iid):
-    if 'id' not in session:
+#----------------------------------------------------
+# Show One Report - SHOW.html
+@app.route('/city/show/<int:report_id>/<int:user_id>')
+def show_report(report_id,user_id):
+    if 'user_id' not in session:
         return redirect ('/logout')
-    data = {"id":iid}
-    user_data = {"id":session['id']}
-    city_data = {"id":idd}
-    return render_template('/show.html', report= Report.get_one(data), reports= Report.reports_with_users(), cityy=cityy, user= User.get_one(user_data), cities = City.city_with_reports(city_data) )
+    data = {"id":report_id}
+    user_data = {"id":session['user_id']}
+    city_data = {"id":report_id}
+    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data) )
 
 # ---------------------------------------------------
 
