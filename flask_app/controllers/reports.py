@@ -19,6 +19,17 @@ def dashboard():
 
 
 # ---------------------------------------------------
+@app.route('/city/reports/<int:city_id>')
+def each_city(city_id):
+    if 'user_id' not in session:
+        return redirect ('/logout')
+    data = {"id": session['user_id']}
+    city_data = {"id": city_id}
+    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
+
+
+
+
 # Show Reports by City - city display page
 @app.route('/city/reports/<int:city_id>/<int:id>')
 def city_display(city_id, id):
@@ -26,7 +37,7 @@ def city_display(city_id, id):
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
+    return render_template('show.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
 # reports= report.Report.reports_with_users()
 
 

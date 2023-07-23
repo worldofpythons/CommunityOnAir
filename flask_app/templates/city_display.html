@@ -29,86 +29,35 @@
             </ul>
         </div>
     </div>
-    
-    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->
-   
+
     <div class="bottom_section">
         <h1 class="head_city_name">{{city.city_name}}</h1> 
-        <div clas="city"></div>
+        {% for report in reports %}
+        <div clas="city">
             <div class="report">
                 <div class="each_report">
-                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
+                    <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="cities_images">
                 </div>
                 <div class="each_report">
-                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
-                    <p class="reporter">By: Tanapa</p>
+                    <h3>{{report.what_happened}}</h3>
+                    <p class="reporter">By: {{report.name}}</p>
                 </div>
+                {% if session['user_id'] != report.users_id %}
                 <div class="each_report">
-                    <a href="/city/" class="view_button">View</a>
-                    <a href="/edit/" class="edit_button">Edit</a>
-                    <a href="/delete/fact/" class="delete_button">Delete</a>
+                    <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
                 </div>
-            </div>
-
-            <div class="report">
-                <div class="each_report">
-                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
-                </div>
-                <div class="each_report">
-                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
-                    <p class="reporter">By: Tanapa</p>
-                </div>
-                <div class="each_report">
-                    <a href="/city/" class="view_button">View</a>
-                    <a href="/edit/" class="edit_button">Edit</a>
-                    <a href="/delete/fact/" class="delete_button">Delete</a>
-                </div>
-            </div>
-
-            <div class="report">
-                <div class="each_report">
-                    <img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="cities_images">
-                </div>
-                <div class="each_report">
-                    <h3>TEST TEST TEST TEST TEST TEST TEST TEST</h3>
-                    <p class="reporter">By: Tanapa</p>
-                </div>
-                <div class="each_report">
-                    <a href="/city/" class="view_button">View</a>
-                    <a href="/edit/" class="edit_button">Edit</a>
-                    <a href="/delete/fact/" class="delete_button">Delete</a>
-                </div>
-            </div>
-            
-    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->    <!-- TEST LAYOUT -->
-
-
-            {% for report in reports %}
-            <div class="reportt">
-                <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}">
-                <h3>{{report.what_happened}}</h3>
-                <p>By: {{report.name}}</p>
-            </div>
-            <!-- -----SHOW ONLY VIEW BUTTON IF THE Report WAS NOT POSTED BY LOGGED-IN USER ----- -->
-            {% if session['user_id'] != report.users_id %}
-            <div class="v_button">
-                <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
-            </div>
-            {% endif %}
-
-            <!-- -----SHOW ALL 3 BUTTONS (VIEW, EDIT, AND DELETE) IF THE FACT POSTED BY LOGGED-IN USER ----- -->
-            <div class="three_buttons">
+                {% endif %}
                 {% if session['user_id'] == report.users_id %}
-                <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
-                <a href="/edit/" class="edit_button">Edit</a>
-                <a href="/delete/fact/" class="delete_button">Delete</a>
+                <div class="each_report">
+                    <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+                    <a href="/edit/" class="edit_button">Edit</a>
+                    <a href="/delete/report/{{session['user_id']}}" class="delete_button">Delete</a>
+                </div>
                 {% endif %}
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}        
     </div>
-
-
 </body>
 
 </html>
