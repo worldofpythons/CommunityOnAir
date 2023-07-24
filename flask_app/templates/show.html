@@ -44,7 +44,7 @@
             <div class="show_report">
                 <div class="show_each_report">
                     <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="show_cities_images">
-                    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="updatehere_button">Update here!</a>
+                    <a href="/update/create/{{report.id}}/{{session['user_id']}}/{{report.cities_id}}" class="updatehere_button">Update here!</a>
                 </div>
                 <div class="show_each_report">
                     <p><strong>What happened:</strong></p>
@@ -72,19 +72,20 @@
         {%for update in updates%}
             <div class="comment_container">
                 <div class="each_comment">
-                    
+
                     <div class="comment_details">
-                            <p class="commenter">By: {{report.name}}</p>
-                            <p><strong>Update: </strong></p>
-                            <p>{{update.details}}</p>
-                            <p><strong>When: </strong></p>
-                            <p>{{update.created_at}}</p>
-                        </div>
+                        <p class="commenter">By: {{report.name}}</p>
+                        <p><strong>Update: </strong></p>
+                        <p>{{update.details}}</p>
+                        <p><strong>When: </strong></p>
+                        <p>{{update.created_at}}</p>
+                    </div>
+
                     <div class="comment_details">
-                            {% if session['user_id'] == report.users_id %}
-                            <a href="/edit/comment/{{update.id}}/{{report.id}}" class="update_edit_button">Edit</a>
-                            <a href="/delete/comment/{{update.id}}" class="update_delete_button">Delete</a>
-                            {% endif %}
+                        {% if session['user_id'] == report.users_id %}
+                        <a href="/edit/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="update_edit_button">Edit</a>
+                        <a href="/delete/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="update_delete_button">Delete</a>
+                        {% endif %}
                     </div>
                     
                 </div>
