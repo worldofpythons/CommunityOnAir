@@ -33,7 +33,7 @@
         <p class="report_details">{{report.what_happened}}</p>
         <p class="commenter">Posted by: {{report.name}}</p>        
         <div class="form_update_container">
-            <form action="/update/create/{{report.id}}/{{user.id}}" method="post" class="form">
+            <form action="/update/create/{{report.id}}/{{user.id}}/{{city.id}}" method="post" class="form">
 
                 {%with messages = get_flashed_messages(category_filter=['update'])%}
                     {%if messages%}
