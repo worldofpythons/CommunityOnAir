@@ -168,3 +168,13 @@ class Report:
             flash("Location must be at least 3 characters","location")
             valid=False
         return valid
+    
+    @classmethod
+    def get_reports_by_city_id(cls,data):
+        query = "SELECT * FROM reports WHERE cities_id = %(id)s;"
+        results = connectToMySQL('communityOnAir').query_db(query, data)
+        reports = []
+        for report in results:
+            reports.append(cls(report))
+        return reports
+    
