@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, session, flash
 from flask_app import app
-from flask_app.models.city import city
+from flask_app.models.city import City
 from flask_app.models.user import User
 from flask_app.models.report import Report
 from flask_app.models.update import Update
@@ -17,7 +17,7 @@ def dashboard():
     if 'user_id' not in session:
         return redirect ('/logout')
     data = {"id": session['id']}
-    return render_template('home.html', user= User.get_by_id(data), cities = city.City.cities(), reports= Report.reports_with_users())
+    return render_template('home.html', user= User.get_by_id(data), cities = City.cities(), reports= Report.reports_with_users())
 
 # ---------------------------------------------------
 
@@ -29,19 +29,19 @@ def each_city(city_id):
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_city_id(city_data))
+    return render_template('city_display.html', user= User.get_by_id(data), city= City.get_one(city_data), reports = Report.get_reports_by_cityId_userinfo(city_data))
 
 # ---------------------------------------------------
 
 # SHOW REPORTS BY CITY - CITY DISPLAY PAGE
 
-@app.route('/city/reports/<int:city_id>/<int:id>')
-def city_display(city_id, id):
+@app.route('/city/reports/<int:report_id>/<int:city_id>')
+def city_display(city_id):
     if 'user_id' not in session:
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('show.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
+    return render_template('show.html', user= User.get_by_id(data), reports = Report.get_reports_by_report_id(city_data))
 # reports= report.Report.reports_with_users()
 
 
@@ -49,14 +49,15 @@ def city_display(city_id, id):
 
 # SHOW ONE REPORT - SHOW.HTML
 
-@app.route('/city/show/<int:report_id>/<int:user_id>')
-def show_report(report_id,user_id):
+@app.route('/city/show/<int:report_id>/<int:city_id>')
+def show_report(report_id,city_id):
     if 'user_id' not in session:
         return redirect ('/logout')
     data = {"id":report_id}
     user_data = {"id":session['user_id']}
-    city_data = {"id":report_id}
-    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), updates=Update.updates())
+    city_dataa = {"id": city_id}
+    city_data = {"id": city_id}
+    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), updates = Update.updates_with_cityid(city_dataa), city = City.get_one(city_data))
 
 # ---------------------------------------------------
 
@@ -67,7 +68,7 @@ def create_report():
     if 'user_id' not in session:
         return redirect('/logout')
     user = User.get_by_id({"id":session['user_id']})
-    return render_template('create.html', user=user, cities = city.City.all_cities())
+    return render_template('create.html', user=user, cities = City.all_cities())
 
 
 @app.route('/create/process', methods=['POST'])
@@ -102,7 +103,7 @@ def edit(id):
         return redirect('/logout')
     user = User.get_by_id({"id":session['user_id']})
     Data = {"id": id}
-    return render_template('edit.html', user=user, report=Report.get_reports_by_reportid_cityInfo(Data),cities=city.City.all_cities())
+    return render_template('edit.html', user=user, report=Report.get_reports_by_reportid_cityInfo(Data),cities=City.all_cities())
 
 @app.route('/update/<int:id>', methods=['POST'])
 def update(id):
