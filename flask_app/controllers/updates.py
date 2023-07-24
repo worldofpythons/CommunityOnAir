@@ -18,8 +18,8 @@ def create_update(report_id,user_id,city_id):
     city_data = {"id": city_id}
     return render_template('update.html', user = User.get_by_id(user), report = Report.get_reports_by_reportid_cityInfo(data), city = City.get_one(city_data))
 
-@app.route('/update/create/<int:report_id>/<int:user_id>', methods=['POST'])
-def process_update(report_id,user_id):
+@app.route('/update/create/<int:report_id>/<int:user_id>/<int:city_id>', methods=['POST'])
+def process_update(report_id,user_id,city_id):
     if 'user_id' not in session:
         return redirect('/logout')
     if not Update.is_valid_update(request.form):
@@ -31,7 +31,7 @@ def process_update(report_id,user_id):
         "cities_id": request.form['city_id']
     }
     Update.save(data)
-    return redirect(f'/city/show/{report_id}/{user_id}')
+    return redirect(f'/city/show/{report_id}/{city_id}')
 
 # ---------------------------------------------------
 
