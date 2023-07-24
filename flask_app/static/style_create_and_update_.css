@@ -183,12 +183,16 @@ label {
 }
 .alert {
     color: #b04f4f;
+    text-align: center;
+    font-weight: bold;
 }
 .two_buttons {
     text-align: right;
 }
 .bottom_section h1 {
-    color: #605c96;
+    color: #453f3f;
+    opacity: 0.8;
+    text-shadow: 4px 2px 4px #bdb6b6;
 }
 .form_update_container {
     display:flex;
@@ -200,4 +204,23 @@ label {
     border-radius: 5px;
     background-color: rgb(210, 220, 222);
     opacity: 0.8;
+}
+
+/* --------------------------------------------------- */
+
+/* UPDATE PAGE */
+
+.report_details {
+    font-weight: bold;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #5c5a5a;
+    opacity: 0.7;
+}
+.commenter {
+    color: #ffffff;
+    background-color: #5c5a5a;
+    font-weight: bold;
+    opacity: 0.7;
+    text-align: right;
 }
