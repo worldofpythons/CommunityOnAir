@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- -----LINK WITH CSS FILE----- -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_show_each_city.css')}}">
-    <!-- -----LINK WITH CSS FILE----- -->
+        <!-- -----LINK WITH CSS FILE----- -->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_show_each_city.css')}}">
+        <!-- -----LINK WITH CSS FILE----- -->
 
-    <title>Find your city</title>
-</head>
+        <title>Find your city</title>
+    </head>
 
-<body>
+    <body>
 
-    <!-- -----NAV BAR----- -->
-    <div class="nav">
-        <h1>COMMUNITY <span>ON-AIR</span></h1>
-        <div class="top_right">
-            <p class="user_name">Welcome, {{user.name}}</p>
-            {% for user in users %}
-            <p>Welcome {{user.name}}</p>
-            {%endfor%}
-            <ul class="nav-links">
-                <li><a href="/home">Home</a></li>|
-                <li><a href="/city">Find your city</a></li>|
-                <li><a href="/create">Report</a></li>|
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- -----NAV BAR----- -->
-
-    <!-- -----SHOW EACH REPORT----- -->
-    <div class="bottom_section">
-        <h1 class="head_city_name">{{city.city_name}}</h1> 
-        {% for report in reports %}
-        <div class="city">
-            <div class="report">
-                <div class="each_report">
-                    <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="cities_images">
-                </div>
-                <div class="each_report">
-                    <h3>{{report.what_happened}}</h3>
-                    <p class="reporter">By: {{report.name}}</p>
-                </div>
-                {% if session['user_id'] != report.users_id %}
-                <div class="each_report">
-                    <a href="/city/show/{{report.id}}/{{session[user_id]}}" class="view_button">View</a>
-                </div>
-                {% endif %}
-                {% if session['user_id'] == report.users_id %}
-                <div class="each_report">
-                    <a href="/city/show/{{report.id}}/{{session[user_id]}}" class="view_button">View</a>
-                    <a href="/edit/{{report.id}}" class="edit_button">Edit</a>
-                    <a href="/delete/{{report.id}}" class="delete_button">Delete</a>
-                </div>
-                {% endif %}
+        <!-- -----NAV BAR----- -->
+        <div class="nav">
+            <h1>COMMUNITY <span>ON-AIR</span></h1>
+            <div class="top_right">
+                <p class="user_name">Welcome, {{user.name}}</p>
+                {% for user in users %}
+                <p>Welcome {{user.name}}</p>
+                {%endfor%}
+                <ul class="nav-links">
+                    <li><a href="/home">Home</a></li>|
+                    <li><a href="/city">Find your city</a></li>|
+                    <li><a href="/create">Report</a></li>|
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
             </div>
         </div>
-        {% endfor %}        
-    </div>
-    <!-- -----SHOW EACH REPORT----- -->
-</body>
+        <!-- -----NAV BAR----- -->
+
+        <!-- -----SHOW EACH REPORT----- -->
+        <div class="bottom_section">
+            <h1 class="head_city_name">{{city.city_name}} </h1> 
+            {% for report in reports %}
+                <div class="city">
+                    <div class="report">
+                        <div class="each_report">
+                            <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"  class="cities_images">
+                        </div>
+                        
+                        <div class="each_report">
+                            <h3>{{report.what_happened}}</h3>
+                            <p class="reporter">By: {{report.name}}</p>
+                        </div>
+                        {% if session['user_id'] != report.users_id %}
+                            <div class="each_report">
+                                <a href="/city/show/{{report.id}}/{{city.id}}" class="view_button">View</a>
+                            </div>
+                        {% endif %}
+                        {% if session['user_id'] == report.users_id %}
+                            <div class="each_report">
+                                <a href="/city/show/{{report.id}}/{{city.id}}" class="view_button">View</a>
+                                <a href="/edit/{{report.id}}" class="edit_button">Edit</a>
+                                <a href="/delete/{{report.id}}" class="delete_button">Delete</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}        
+        </div>
+        <!-- -----SHOW EACH REPORT----- -->
+    </body>
 
 </html>
