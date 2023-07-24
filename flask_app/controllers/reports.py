@@ -56,7 +56,7 @@ def show_report(report_id,user_id):
     data = {"id":report_id}
     user_data = {"id":session['user_id']}
     city_data = {"id":report_id}
-    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), update=Update.get_one_by_id(data))
+    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), updates=Update.updates())
 
 # ---------------------------------------------------
 

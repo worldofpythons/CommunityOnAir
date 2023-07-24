@@ -69,24 +69,31 @@
 
     <!-- -----SHOW EACH COMMENTS----- -->
     <div class="comments">
-        <div class="comment_container">
-            <div class="each_comment">
-                <div class="comment_details">
-                    <p class="commenter">By: !!!!</p>
-                    <p><strong>Update: </strong></p>
-                    <p>{{update.details}}</p>
-                    <p><strong>When: </strong></p>
-                    <p>{{update.created_at}}</p>
-                </div>
-                <div class="comment_details">
-                    {% if session['user_id'] == report.users_id %}
-                    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="update_edit_button">Edit</a>
-                    <a href="/delete/comment/{{update.id}}" class="update_delete_button">Delete</a>
-                    {% endif %}
+        {%for update in updates%}
+            <div class="comment_container">
+                <div class="each_comment">
+                    
+                    <div class="comment_details">
+                        
+                            <p class="commenter">By: {{report.name}}</p>
+                            <p><strong>Update: </strong></p>
+                            <p>{{update.details}}</p>
+                            <p><strong>When: </strong></p>
+                            <p>{{update.created_at}}</p>
+                        </div>
+                        <div class="comment_details">
+                            {% if session['user_id'] == report.users_id %}
+                            <a href="/edit/comment/{{update.id}}/{{report.id}}" class="update_edit_button">Edit</a>
+                            <a href="/delete/comment/{{update.id}}" class="update_delete_button">Delete</a>
+                            {% endif %}
+                        
+                    </div>
+                    
                 </div>
             </div>
-        </div>
+        {%endfor%}
     </div>
+    
     <!-- -----SHOW EACH COMMENTS----- -->
 </body>
 </html>

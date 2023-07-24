@@ -94,7 +94,10 @@
                 </div>
                 <div class="two_reports">
                     <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
+                    {%for report in reports%}
+                        <p class="reports">{{report.what_happened}}</a>
+                                                {%break%}
+                    {%endfor%}
                 </div>
             </div>
         </div>

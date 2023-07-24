@@ -33,16 +33,27 @@
         <p>{{report.what_happened}}</p>
         <p>POSTED BY: {{report.name}}</p>        
         <div class="form_update_container">
-            <form action="/update/create/process" method="post" class="form">
+            <form action="/update" method="post" class="form">
+
+                {%with messages = get_flashed_messages(category_filter=['update'])%}
+                    {%if messages%}
+                    <div class="alert alert-danger" role="alert">
+                        {%for message in messages%}
+                            <p class="text-danger">{{message}}</p>
+                        {%endfor%}            
+                    </div>
+                    {%endif%}
+                {%endwith%}    
+
                 <h2 class="head_text">Update the situation</h2>
                 <div class="form_group">
                     <label for="details"><strong>Update details:</strong></label>
-                    <textarea name="details" id="details" rows="5" cols="45"></textarea>
+                    <textarea name="details" rows="5" cols="45"></textarea>
                 </div>
                 <div class="form_group">
                 <div class="form_group">
-                    <input type="hidden" id="report_id" name="report_id" value="{{report.id}}">
-                    <input type="hidden" id="users_id" name="users_id" value="{{session.user_id}}">
+                    <input type="hidden" name="report_id" value={{report.id}}>
+                    <input type="hidden" name="users_id" value={{session.user_id}}>
                 </div>                </div>
                 <div class="two_buttons">
                     <a href="/home" class="cancel_button">Cancel</a>

@@ -20,9 +20,7 @@
         {%endfor%}
         <div class="top_right">
             <p class="user_name">TEST USER NAME</p>            
-            {% for user in users %}
             <p>Welcome {{user.name}}</p>
-            {%endfor%}
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
@@ -35,15 +33,15 @@
 
     <!-- -----EDIT AN UPDATE----- -->
     <div class="bottom_section">
-        <h1>TEST CITY NAME</span></h1>       
-        <p>TEST REPORT INFO</p>
-        <p>TEST POSTED BY:</p>        
+        <h1>CITY NAME: {{report.city_name}}</span></h1>       
+        <p>REPORT INFO: {{report.what_happened}}</p>
+        <p>POSTED BY:{{user.name}} </p>        
         <div class="form_update_container">
-            <form action="/update/create/process" method="post" class="form">
+            <form action="/update/comment/{{update.id}}/{{report.id}}" method="post" class="form">
                 <h2 class="head_text">Edit the situation</h2>
                 <div class="form_group">
                     <label for="fact"><strong>Update details:</strong></label>
-                    <textarea name="what_happened" id="what_happened" rows="5" cols="45"></textarea>
+                    <textarea name="details" rows="5" cols="45">{{update.details}}</textarea>
                 </div>
                 <div class="two_buttons">
                     <a href="/home" class="cancel_button">Cancel</a>
