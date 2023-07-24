@@ -90,7 +90,7 @@ def process():
         'image': image.filename
     }
     Report.save_report(data)
-    return redirect('/home')
+    return redirect('/city')
 
 # ---------------------------------------------------
 
@@ -109,7 +109,7 @@ def update(id):
     if 'user_id' not in session:
         return redirect('/logout')
     if not Report.valid_report(request.form):
-        return redirect(f'/edit/<int:id>')
+        return redirect(f'/edit/{id}')
     data = {
         'what_happened': request.form['what_happened'],
         'cities_id': request.form['city'],
@@ -119,7 +119,7 @@ def update(id):
         'image': request.form['image']
     }
     Report.update_report(data)
-    return redirect('/home')
+    return redirect('/city')
 
 # ---------------------------------------------------
 
@@ -130,4 +130,4 @@ def delete_report(id):
     if 'user_id' not in session:
         return redirect('/logout')
     Report.delete_report({'id':id})
-    return redirect('/home')
+    return redirect('/city')
