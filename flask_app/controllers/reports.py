@@ -73,7 +73,6 @@ def create_report():
 
 @app.route('/create/process', methods=['POST'])
 def process():
-
     if 'user_id' not in session:
         return redirect('/logout')
     if not Report.valid_report(request.form):
