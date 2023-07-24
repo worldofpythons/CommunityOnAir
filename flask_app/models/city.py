@@ -3,7 +3,9 @@ from flask_app.models import report, user, city , update
 from flask import flash
 
 # ---------------------------------------------------
+
 # "City" CLASS
+
 class City:
     def __init__( self , data ):
         self.id = data['id']
@@ -13,7 +15,8 @@ class City:
         self.reports = []
 
 # ---------------------------------------------------
-# Save CITY
+
+# SAVE CITY
     @classmethod
     def save_city(cls, data):
         query = "INSERT INTO cities (city_name) VALUES(%(city_name)s);"
@@ -21,7 +24,9 @@ class City:
     
 
 # ---------------------------------------------------
+
 # GET ALL CITIES
+
     @classmethod
     def all_cities(cls):
         query = "SELECT * FROM cities;"
@@ -32,7 +37,9 @@ class City:
         return cities
 
 # ---------------------------------------------------
-# GET CITY BY City ID
+
+# GET CITY BY CITY ID
+
     @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM cities WHERE id = %(id)s;"

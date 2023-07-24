@@ -6,7 +6,9 @@ from flask_app.models.city import City
 
 
 # ---------------------------------------------------
-# Show all Cities
+
+# SHOW ALL CITIES
+
 @app.route('/city')
 def city():
     if 'user_id' not in session:

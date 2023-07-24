@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 # ---------------------------------------------------
+
 # Login/Registration
 
 @app.route('/')
@@ -13,7 +14,8 @@ def index():
     return render_template("index.html")
 
 # ---------------------------------------------------
-#DASHBOARD
+
+# DASHBOARD
 
 @app.route('/home')
 def home():
@@ -24,6 +26,7 @@ def home():
 
 
 # ---------------------------------------------------
+
 # USER REGISTER
 
 @app.route('/register', methods=["POST"])
@@ -40,7 +43,8 @@ def register():
     return redirect ('/home')
 
 # ---------------------------------------------------
-#USER LOGIN
+
+# USER LOGIN
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -55,6 +59,7 @@ def login():
     return redirect('/home')
 
 # ---------------------------------------------------
+
 # USER LOGOUT
 
 @app.route('/logout')

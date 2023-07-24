@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import os
 
 # ---------------------------------------------------
+
 # "Report" CLASS
 class Report:
     def __init__( self , data ):
@@ -20,7 +21,9 @@ class Report:
         self.updates =[]
         
 # ---------------------------------------------------
-# GET REPORTS BY CITY ID cities and id
+
+# GET REPORTS BY CITY AND ID
+
     @classmethod
     def get_reports_by_reportid_cityInfo(cls, data):
         query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id LEFT JOIN users ON users_id = users.id WHERE reports.id = %(id)s;"
@@ -54,7 +57,9 @@ class Report:
         return reports[0]
             
 # ---------------------------------------------------
-# GET REPORTS BY Report ID and city name
+
+# GET REPORTS BY REPORT ID AND CITY NAME
+
     @classmethod
     def get_reports_by_report_id(cls, data):
         query = "SELECT * FROM reports LEFT JOIN users ON users_id = users.id WHERE reports.id = %(id)s;"
@@ -75,11 +80,10 @@ class Report:
             reports.append(report)
         print(reports)
         return reports
-
-
-
+    
 # ---------------------------------------------------
-# GET ALL REPORTS Joins with USERS and CITIES
+
+# GET ALL REPORTS JOINS WITH USERS AND CITIES
     @classmethod
     def reports_with_users(cls):
         query = """
@@ -112,14 +116,17 @@ class Report:
         return reports
     
 # ---------------------------------------------------
-# Save REPORT
+
+# SAVE REPORT
+
     @classmethod
     def save_report(cls, data):
         query = "INSERT INTO reports (what_happened, cities_id, users_id, location, image) VALUES(%(what_happened)s, %(cities_id)s, %(users_id)s, %(location)s, %(image)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
 
 # ---------------------------------------------------
-#GET REPORT BY ID
+
+# GET REPORT BY ID
     @classmethod
     def get_one(cls, id):
         query  = "SELECT * FROM reports WHERE id = %(id)s;"
@@ -128,7 +135,9 @@ class Report:
         return cls(results[0])
     
 # ---------------------------------------------------
+
 # UPDATE REPORT
+
     @classmethod
     def update_report(cls,data):
         query = """UPDATE reports 
@@ -137,6 +146,7 @@ class Report:
         return connectToMySQL('communityOnAir').query_db(query,data) 
 
 # ---------------------------------------------------
+
 # DELETE REPORT
 
     @classmethod
@@ -145,7 +155,9 @@ class Report:
         return connectToMySQL('communityOnAir').query_db(query, id)
 
 # ---------------------------------------------------
+
 # VALIDATION
+
     @staticmethod
     def valid_report(report):
         valid=True

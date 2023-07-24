@@ -6,6 +6,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 # ---------------------------------------------------
+
 # "User" CLASS
 
 class User:
@@ -19,6 +20,7 @@ class User:
         self.comments=[]
 
 # ---------------------------------------------------
+
 # VALIDATION
 
     @staticmethod
@@ -44,6 +46,7 @@ class User:
         return is_valid
 
 # ---------------------------------------------------
+
 # GET ALL USERS
 
     @classmethod
@@ -56,6 +59,7 @@ class User:
         return users
 
 # ---------------------------------------------------
+
 # SAVE USER NAME, EMAIL AND PASSWORD
 
     @classmethod
@@ -64,6 +68,7 @@ class User:
         return connectToMySQL('communityOnAir').query_db(query, data)
     
 # ---------------------------------------------------
+
 # GET EMAIL
 
     @classmethod
@@ -75,6 +80,7 @@ class User:
         return cls(results[0])
 
 # ---------------------------------------------------
+
 # GET USER BY USER ID
 
     @classmethod

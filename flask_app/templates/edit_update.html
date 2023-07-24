@@ -12,6 +12,7 @@
 </head>
 <body>
 
+    <!-- -----NAV BAR----- -->
     <div class="nav">
     <h1>TEST HEAD</h1>        
         {%for city in cities%}
@@ -30,25 +31,27 @@
             </ul>
         </div>
     </div>
+    <!-- -----NAV BAR----- -->
 
+    <!-- -----EDIT AN UPDATE----- -->
     <div class="bottom_section">
         <h1>TEST CITY NAME</span></h1>       
         <p>TEST REPORT INFO</p>
         <p>TEST POSTED BY:</p>        
         <div class="form_update_container">
-            <form action="/" method="post" class="form">
+            <form action="/update/create/process" method="post" class="form">
                 <h2 class="head_text">Edit the situation</h2>
                 <div class="form_group">
                     <label for="fact"><strong>Update details:</strong></label>
                     <textarea name="what_happened" id="what_happened" rows="5" cols="45"></textarea>
                 </div>
                 <div class="two_buttons">
-                    <a href="/" class="cancel_button">Cancel</a>
+                    <a href="/home" class="cancel_button">Cancel</a>
                     <input type="submit" value="Submit" class="submit_button">
                 </div>
             </form>                   
         </div>
     </div>
-
+    <!-- -----EDIT AN UPDATE----- -->
 </body>
 </html>

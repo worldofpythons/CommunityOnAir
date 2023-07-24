@@ -11,7 +11,8 @@
     <title>Update</title>
 </head>
 <body>
-
+    
+    <!-- -----NAV BAR----- -->
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>        
         <div class="top_right">
@@ -24,13 +25,15 @@
             </ul>
         </div>
     </div>
+    <!-- -----NAV BAR----- -->
 
+    <!-- UPDATE (COMMENT) -->
     <div class="bottom_section">
         <h1>{{report.city_name}}</span></h1>       
         <p>{{report.what_happened}}</p>
         <p>POSTED BY: {{report.name}}</p>        
         <div class="form_update_container">
-            <form action="/create/update/process" method="post" class="form">
+            <form action="/update/create/process" method="post" class="form">
                 <h2 class="head_text">Update the situation</h2>
                 <div class="form_group">
                     <label for="details"><strong>Update details:</strong></label>
@@ -48,6 +51,6 @@
             </form>                   
         </div>
     </div>
-
+    <!-- UPDATE (COMMENT) -->
 </body>
 </html>

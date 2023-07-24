@@ -6,7 +6,9 @@ from flask_app.models.city import city
 from flask_app.models.update import Update
 
 # ---------------------------------------------------
-# Create Update
+
+# CREATE AN UPDATE
+
 @app.route('/update/create/<int:report_id>/<int:user_id>')
 def create_update(report_id,user_id):
     if 'user_id' not in session:
@@ -15,7 +17,7 @@ def create_update(report_id,user_id):
     user_data = {"id":user_id}
     return render_template('update.html', user = User.get_by_id(user_data), report = Report.get_reports_by_reportid_cityInfo(data))
 
-@app.route('/create/update/process', methods=['POST'])
+@app.route('/update/create/process', methods=['POST'])
 def process_update():
     if 'user_id' not in session:
         return redirect('/logout')
@@ -27,4 +29,15 @@ def process_update():
         "report_id": request.form['report_id']
     }
     Update.save(data)
+    return redirect('/home')
+
+# ---------------------------------------------------
+
+# DELETE - USERS CAN DELETE THEIR COMMENTS
+
+@app.route('/delete/comment/<int:id>')
+def delete_comment(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+    Report.delete_report({'id':id})
     return redirect('/home')

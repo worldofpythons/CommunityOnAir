@@ -11,7 +11,8 @@
     <title>Show</title>
 </head>
 <body>
-
+    
+    <!-- -----NAV BAR----- -->
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>       
         {%for city in cities%}
@@ -30,9 +31,12 @@
             </ul>
         </div>
     </div>
+    <!-- -----NAV BAR----- -->
+
     <!-- Report Page to show all information about the report and provide updates -->
     <!-- <img src="/static/img/uploads/{{report.image}}" alt="{{report.image}}"> -->
 
+    <!-- -----SHOW EACH REPORT DETAILS----- -->
     <div class="bottom_section">        
         <div clas="city">
             <h1 class="show_head_city_name">{{report.city_name}}</h1>
@@ -61,6 +65,28 @@
             </div>
         </div>
     </div>
-    
+    <!-- -----SHOW EACH REPORT DETAILS----- -->
+
+    <!-- -----SHOW EACH COMMENTS----- -->
+    <div class="comments">
+        <div class="comment_container">
+            <div class="each_comment">
+                <div class="comment_details">
+                    <p class="commenter">By: !!!!</p>
+                    <p><strong>Update: </strong></p>
+                    <p>{{update.details}}</p>
+                    <p><strong>When: </strong></p>
+                    <p>{{update.created_at}}</p>
+                </div>
+                <div class="comment_details">
+                    {% if session['user_id'] == report.users_id %}
+                    <a href="/update/create/{{report.id}}/{{session['user_id']}}" class="update_edit_button">Edit</a>
+                    <a href="/delete/comment/{{update.id}}" class="update_delete_button">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -----SHOW EACH COMMENTS----- -->
 </body>
 </html>

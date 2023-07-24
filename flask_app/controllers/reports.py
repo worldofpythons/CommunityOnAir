@@ -3,12 +3,15 @@ from flask_app import app
 from flask_app.models.city import city
 from flask_app.models.user import User
 from flask_app.models.report import Report
+from flask_app.models.update import Update
 from werkzeug.utils import secure_filename
 import os
 
 
 # ---------------------------------------------------
-# Show All Reports
+
+# SHOW ALL REPORTS
+
 @app.route('/home')
 def dashboard():
     if 'user_id' not in session:
@@ -16,10 +19,11 @@ def dashboard():
     data = {"id": session['id']}
     return render_template('home.html', user= User.get_by_id(data), cities = city.City.cities(), reports= Report.reports_with_users())
 
-
-
 # ---------------------------------------------------
-@app.route('/city/reports/<int:city_id>')
+
+# SHOW EACH CITY
+
+@app.route('/city/<int:city_id>')
 def each_city(city_id):
     if 'user_id' not in session:
         return redirect ('/logout')
@@ -27,10 +31,10 @@ def each_city(city_id):
     city_data = {"id": city_id}
     return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
 
+# ---------------------------------------------------
 
+# SHOW REPORTS BY CITY - CITY DISPLAY PAGE
 
-
-# Show Reports by City - city display page
 @app.route('/city/reports/<int:city_id>/<int:id>')
 def city_display(city_id, id):
     if 'user_id' not in session:
@@ -41,9 +45,10 @@ def city_display(city_id, id):
 # reports= report.Report.reports_with_users()
 
 
-
 #----------------------------------------------------
-# Show One Report - SHOW.html
+
+# SHOW ONE REPORT - SHOW.HTML
+
 @app.route('/city/show/<int:report_id>/<int:user_id>')
 def show_report(report_id,user_id):
     if 'user_id' not in session:
@@ -51,7 +56,7 @@ def show_report(report_id,user_id):
     data = {"id":report_id}
     user_data = {"id":session['user_id']}
     city_data = {"id":report_id}
-    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data) )
+    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), update=Update.get_one_by_id(data))
 
 # ---------------------------------------------------
 
@@ -88,6 +93,7 @@ def process():
     return redirect('/home')
 
 # ---------------------------------------------------
+
 # EDIT AND UPDATE PAGE - USERS CAN EDIT AND UPDATE THEIR REPORTS
 
 @app.route('/edit/<int:id>')
@@ -116,7 +122,8 @@ def update(id):
     return redirect('/home')
 
 # ---------------------------------------------------
-# DELETE - USERS CAN DELETE THEIR FACTS
+
+# DELETE - USERS CAN DELETE THEIR REPORTS
 
 @app.route('/delete/<int:id>')
 def delete_report(id):
