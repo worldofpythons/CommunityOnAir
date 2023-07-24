@@ -150,9 +150,9 @@ class Report:
 # DELETE REPORT
 
     @classmethod
-    def delete_report(cls, id):
+    def delete_report(cls, data):
         query  = "DELETE FROM reports WHERE id = %(id)s;"
-        return connectToMySQL('communityOnAir').query_db(query, id)
+        return connectToMySQL('communityOnAir').query_db(query, data)
 
 # ---------------------------------------------------
 

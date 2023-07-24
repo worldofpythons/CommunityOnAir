@@ -129,5 +129,6 @@ def update(id):
 def delete_report(id):
     if 'user_id' not in session:
         return redirect('/logout')
-    Report.delete_report({'id':id})
+    data = {"id":id}
+    Report.delete_report(data)
     return redirect('/city')
