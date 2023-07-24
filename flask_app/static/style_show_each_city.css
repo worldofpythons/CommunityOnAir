@@ -135,7 +135,43 @@ h3 {
     text-align: end;
     margin-right: 5px;
 }
+/* COMMENTS SECTION */
 
+.comments {
+    display: inline-block;
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    align-items: center;
+
+}
+.comment_container {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    margin: 10px;
+    color: #3d3535;
+}
+.each_comment {
+    display: flex;
+    flex-direction: column;
+
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgb(210, 220, 222);
+    opacity: 0.9;
+    padding: 20px;
+}
+.commenter {
+    text-align: right;
+}
+.comment_details {
+    color: #5e5e5e;
+}
+.comment_buttons {
+    /* text-align: right; */
+    color: #5e5e5e;
+}
 /* --------------------------------------------------- */
 
 /* BUTTONS */
@@ -180,6 +216,33 @@ h3 {
     text-align: center;
 }
 .updatehere_button {
+    color: #453f3f;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    background:  rgb(186, 220, 178);
+    border-radius: 5px;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px 1px #c3bdbd;
+    border: 2px solid #453f3f;
+    padding: 5px;
+    text-align: center;
+    margin-top: 20px;
+}
+.update_delete_button {
+    color: #453f3f;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    background:  rgb(178, 215, 220);
+    border-radius: 5px;
+    font-size: 15px;
+    box-shadow: 2px 2px 2px 1px #c3bdbd;
+    border: 2px solid #453f3f;
+    padding: 5px;
+    text-align: center;
+}
+.update_edit_button {
     color: #453f3f;
     font-weight: 600;
     text-decoration: none;

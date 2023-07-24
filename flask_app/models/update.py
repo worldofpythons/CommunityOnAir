@@ -4,6 +4,7 @@ from flask_app.models import user, report
 
 
 # ---------------------------------------------------
+
 # "Update" CLASS
 class Update:
     def __init__( self, data):
@@ -15,6 +16,7 @@ class Update:
         self.report_id = data['report_id']
 
 # ---------------------------------------------------
+
 # VALIDATION
 
     @staticmethod
@@ -26,7 +28,8 @@ class Update:
         return is_valid
     
 # ---------------------------------------------------
-# Save UPDATE with USER ID and REPORT ID
+
+# SAVE UPDATE WITH USER ID AND REPORT ID
 
     @classmethod
     def save(cls, data):
@@ -34,7 +37,9 @@ class Update:
         return connectToMySQL('communityOnAir').query_db(query, data)
     
 # ---------------------------------------------------
+
 # GET ALL UPDATES
+
     @classmethod
     def updates(cls):
         query = "SELECT * FROM updates;"
@@ -44,6 +49,7 @@ class Update:
             updates.append(cls(update))
         return updates
 # ---------------------------------------------------
+
 # GET ONE UPDATE
 
     @classmethod
@@ -54,8 +60,9 @@ class Update:
             update = cls(result[0])
             return update
         else:
-            return cls(result[0])
+            return False
 # ---------------------------------------------------
+
 #UPDATE AN UPDATE
 
     @classmethod
@@ -65,10 +72,11 @@ class Update:
         return result
 
 # ---------------------------------------------------
+
 # DELETE A COMMENT
 
     @classmethod
-    def delete(cls, data):
+    def delete_update(cls, data):
         query = "DELETE FROM updates WHERE id = %(id)s;"
         result = connectToMySQL('communityOnAir').query_db(query, data)
         return result

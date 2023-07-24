@@ -12,6 +12,7 @@
 </head>
 <body>
 
+    <!-- -----NAV BAR----- -->
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>       
         {%for city in cities%}
@@ -28,7 +29,31 @@
             </ul>
         </div>
     </div>
+    <!-- -----NAV BAR----- -->
 
+    
+    <!-- -----FLASH MESSAGES ALERT----- -->
+    <div class="alert">
+        {% with messages = get_flashed_messages(category_filter=['report']) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="alert">
+        {% with messages = get_flashed_messages(category_filter=['location']) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <!-- -----FLASH MESSAGES ALERT----- -->   
+
+    <!-- -----EDIT A REPORT----- -->
     <div class="bottom_section">
         <div class="form_container">
             <form action="/update/{{report.id}}" method="post" class="form">
@@ -61,5 +86,6 @@
             </form>                
         </div>
     </div>
+    <!-- -----EDIT A REPORT----- -->
 </body>
 </html>

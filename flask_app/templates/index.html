@@ -18,37 +18,44 @@
     <div class="index">
         <h1 class="welcome">COMMUNITY <span>ON-AIR</span></h1>
         <div class="login_register_containers">
+
+            <!-- -----LOGIN----- -->
             <div class="toast fade show container p-5 bg-light">
             <h1 class="head">Login</h1>
+            
+                <!-- -----FLASH MESSAGES ALERT----- -->   
                 <div class="toast-body">
                     {%with messages = get_flashed_messages(category_filter=['login'])%}
                         {%if messages%}
-                    <div class="alert alert-danger" role="alert"></div>
+                    <div class="alert alert-danger" role="alert">
                             {%for message in messages%}
                             <p class="text-danger">{{message}}</p>
                             {%endfor%}            
                     </div>
                         {%endif%}
-                    {%endwith%}            
+                    {%endwith%}    
+                    <!-- -----FLASH MESSAGES ALERT----- --> 
+
                     <form action="/login" method="post" class="container">
                         <div class="form-group">
                             <label for="email">Email: </label>
                             <input type="text" name="email" class="form-control">
                         </div>
-
                         <div class="form-group">
                             <label for="password">Password: </label>
                             <input type="password" name="password" class="form-control">
                         </div>
-
-                            <input type="submit" value="Login" class="login_button">
+                        <input type="submit" value="Login" class="login_button">
                     </form>
                 </div>
             </div>
+            <!-- -----LOGIN----- -->
 
+            <!-- -----REGISTER----- -->
             <div class="toast fade show container p-5 bg-light">
                 <h1 class="head">Register</h1>
-                
+
+                    <!-- -----FLASH MESSAGES ALERT----- -->   
                     <div class="toast-body">
                     {%with messages = get_flashed_messages(category_filter=['register'])%}
                         {%if messages%}
@@ -59,31 +66,31 @@
                         </div>                        
                         {%endif%}
                     {%endwith%}
+                    <!-- -----FLASH MESSAGES ALERT----- --> 
+
                     <form action="/register" method="post" class="container">
                         <div class="form-group">
                             <label for="name">Username: </label>
                             <input type="text" name="name" class="form-control">
                         </div>
-
                         <div class="form-group">
                             <label for="email">Email: </label>
                             <input type="text" name="email" class="form-control">
                         </div>
-
                         <div class="form-group">
                             <label for="password">Password: </label>
                             <input type="password" name="password" class="form-control">
                         </div>
-
                         <div class="form-group"></div>
                             <label for="confirm">Confirm Password: </label>
                             <input type="password" name="confirm" class="form-control">
                         </div>
-
                         <input type="submit" value="Register" class="register_button">
                     </form>
                 </div>
             </div>
+            <!-- -----REGISTER----- -->
+
         </div>
     </div>
 </body>

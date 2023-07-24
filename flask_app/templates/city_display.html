@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <!-- DISPLAY ALL CITIES -->
+
+    <!-- -----NAV BAR----- -->
     <div class="nav">
         <h1>COMMUNITY <span>ON-AIR</span></h1>
         <div class="top_right">
@@ -29,7 +30,9 @@
             </ul>
         </div>
     </div>
+    <!-- -----NAV BAR----- -->
 
+    <!-- -----SHOW EACH REPORT----- -->
     <div class="bottom_section">
         <h1 class="head_city_name">{{city.city_name}}</h1> 
         {% for report in reports %}
@@ -58,6 +61,7 @@
         </div>
         {% endfor %}        
     </div>
+    <!-- -----SHOW EACH REPORT----- -->
 </body>
 
 </html>
