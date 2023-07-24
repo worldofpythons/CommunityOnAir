@@ -33,7 +33,7 @@ class Update:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO updates (details, users_id, report_id) VALUES(%(details)s, %(users_id)s, %(report_id)s);"
+        query = "INSERT INTO updates (details, users_id, report_id, cities_id) VALUES (%(details)s, %(users_id)s, %(report_id)s, %(cities_id)s);"
         return connectToMySQL('communityOnAir').query_db(query, data)
     
 # ---------------------------------------------------
@@ -80,3 +80,15 @@ class Update:
         query = "DELETE FROM updates WHERE id = %(id)s;"
         result = connectToMySQL('communityOnAir').query_db(query, data)
         return result
+    
+    @classmethod
+    def updates_with_cityid(cls,data):
+        query = "SELECT * FROM updates WHERE cities_id = %(id)s"
+        results = connectToMySQL('communityOnAir').query_db(query,data)
+        updates = []
+        for update in results:
+            updates.append(cls(update))
+        print(updates)
+        return updates
+    
+# ------------------------
