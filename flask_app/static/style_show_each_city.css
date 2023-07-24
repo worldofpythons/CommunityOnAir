@@ -145,7 +145,7 @@ h3 {
 
 }
 .comment_container {
-    display: flex;
+    display: inline-block;
     align-items: center;
     /* justify-content: space-around; */
     margin: 10px;
