@@ -59,4 +59,4 @@ def update_comment(id, report_id):
     Update.update(data)
     user_data= {"id":session['user_id']}
     report_id = report_id
-    return redirect('/city')
+    return redirect(f'/city/show/{report_id}/{id}')
