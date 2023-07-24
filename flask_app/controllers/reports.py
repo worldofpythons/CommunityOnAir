@@ -29,7 +29,7 @@ def each_city(city_id):
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
-    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_report_id(city_data))
+    return render_template('city_display.html', user= User.get_by_id(data), city= city.City.get_one(city_data), reports = Report.get_reports_by_city_id(city_data))
 
 # ---------------------------------------------------
 
