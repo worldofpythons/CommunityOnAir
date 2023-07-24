@@ -47,12 +47,12 @@
                 </div>
                 {% if session['user_id'] != report.users_id %}
                 <div class="each_report">
-                    <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+                    <a href="/city/show/{{report.id}}/{{session[user_id]}}" class="view_button">View</a>
                 </div>
                 {% endif %}
                 {% if session['user_id'] == report.users_id %}
                 <div class="each_report">
-                    <a href="/city/show/{{report.id}}/{{session['user_id']}}" class="view_button">View</a>
+                    <a href="/city/show/{{report.id}}/{{session[user_id]}}" class="view_button">View</a>
                     <a href="/edit/{{report.id}}" class="edit_button">Edit</a>
                     <a href="/delete/{{report.id}}" class="delete_button">Delete</a>
                 </div>
