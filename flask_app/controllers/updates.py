@@ -17,8 +17,8 @@ def create_update(report_id,user_id):
     user = {"id":user_id}
     return render_template('update.html', user = User.get_by_id(user), report = Report.get_reports_by_reportid_cityInfo(data))
 
-@app.route('/update', methods=['POST'])
-def process_update():
+@app.route('/update/create/<int:report_id>/<int:user_id>', methods=['POST'])
+def process_update(report_id,user_id):
     if 'user_id' not in session:
         return redirect('/logout')
     if not Update.is_valid_update(request.form):
@@ -29,7 +29,7 @@ def process_update():
         "report_id": request.form['report_id']
     }
     Update.save(data)
-    return redirect('/home')
+    return redirect(f'/city/show/{report_id}/{user_id}')
 
 # ---------------------------------------------------
 
@@ -40,7 +40,7 @@ def delete_comment(id):
     if 'user_id' not in session:
         return redirect('/logout')
     Update.delete_update({'id':id})
-    return redirect('/home')
+    return redirect('/city')
 
 @app.route('/edit/comment/<int:id>/<int:idd>')
 def edit_comment(id,idd):
@@ -59,4 +59,4 @@ def update_comment(id, report_id):
     Update.update(data)
     user_data= {"id":session['user_id']}
     report_id = report_id
-    return redirect('/home')
+    return redirect('/city')
