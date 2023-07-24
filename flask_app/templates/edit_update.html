@@ -16,7 +16,7 @@
     <div class="nav">
     <h1>TEST HEAD</h1>        
         {%for city in cities%}
-        <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
+            <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
         {%endfor%}
         <div class="top_right">
             <p class="user_name">TEST USER NAME</p>            
@@ -37,7 +37,7 @@
         <p>REPORT INFO: {{report.what_happened}}</p>
         <p>POSTED BY:{{user.name}} </p>        
         <div class="form_update_container">
-            <form action="/update/comment/{{update.id}}/{{report.id}}" method="post" class="form">
+            <form action="/update/comment/{{update.id}}/{{city.id}}/{{session['user_id']}}/{{report.id}}" method="post" class="form">
                 <h2 class="head_text">Edit the situation</h2>
                 <div class="form_group">
                     <label for="fact"><strong>Update details:</strong></label>
