@@ -178,3 +178,24 @@ class Report:
             reports.append(cls(report))
         return reports
     
+    @classmethod
+    def get_reports_by_cityId_userinfo(cls, data):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id LEFT JOIN users ON users_id = users.id WHERE cities_id = %(id)s;"
+        results = connectToMySQL('communityOnAir').query_db(query, data)
+        reports = []
+        print(results)
+        for report in results:
+            this_report = cls(report)
+            user_data = {
+                "id": report['users.id'],
+                "name": report['name'],
+                "email": report['email'],
+                "password": "",
+                "created_at": report['users.created_at'],
+                "updated_at": report['users.updated_at']
+            }
+            this_report.reporter = user.User(user_data)
+            reports.append(report)
+        
+        return reports
+    
