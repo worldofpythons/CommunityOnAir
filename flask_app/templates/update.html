@@ -27,6 +27,18 @@
     </div>
     <!-- -----NAV BAR----- -->
 
+    <!-- -----FLASH MESSAGES ALERT----- -->
+    <div class="alert">
+        {% with messages = get_flashed_messages(category_filter=['update']) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <!-- -----FLASH MESSAGES ALERT----- -->  
+
     <!-- UPDATE (COMMENT) -->
     <div class="bottom_section">
         <h1>{{report.city_name}}</span></h1>       
@@ -34,30 +46,18 @@
         <p class="commenter">Posted by: {{report.name}}</p>        
         <div class="form_update_container">
             <form action="/update/create/{{report.id}}/{{user.id}}/{{city.id}}" method="post" class="form">
-
-                {%with messages = get_flashed_messages(category_filter=['update'])%}
-                    {%if messages%}
-                    <div class="alert alert-danger" role="alert">
-                        {%for message in messages%}
-                            <p class="text-danger">{{message}}</p>
-                        {%endfor%}            
-                    </div>
-                    {%endif%}
-                {%endwith%}    
-
                 <h2 class="head_text">Update the situation</h2>
                 <div class="form_group">
                     <label for="details"><strong>Update details:</strong></label>
                     <textarea name="details" rows="5" cols="45"></textarea>
                 </div>
                 <div class="form_group">
-                <div class="form_group">
                     <input type="hidden" name="report_id" value={{report.id}}>
                     <input type="hidden" name="users_id" value={{session.user_id}}>
                     <input type="hidden" name="city_id" value={{city.id}}>
-                </div>                </div>
+                </div>             
                 <div class="two_buttons">
-                    <a href="/home" class="cancel_button">Cancel</a>
+                    <a href="/city/show/{{report.id}}/{{city.id}}" class="cancel_button">Cancel</a>
                     <input type="submit" value="Submit" class="submit_button">
                 </div>
             </form>                   

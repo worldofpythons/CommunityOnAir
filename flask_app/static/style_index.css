@@ -14,16 +14,16 @@ body {
     margin-top: 50px;
 }
 h1 span {
-    color: #b04f4f;
+    color: #924040;
 }
 .welcome {
     text-align: center;
     font-size: 80px;
-    color: rgb(108, 108, 102);
+    color: rgb(96, 96, 84);
     text-shadow: 4px 2px 4px #bdb6b6;
 }
 .head {
-    color: rgb(128, 190, 197);
+    color: rgb(105, 159, 165);
     margin-left: 20px;
 }
 .login_register_containers {
@@ -32,6 +32,7 @@ h1 span {
     margin-top: 40px;
 }
 .register_button {
+    margin-left: 20px;
     color: #000000;
     margin-top: 25px;
     padding: 5px 10px;
@@ -39,11 +40,16 @@ h1 span {
     text-decoration: none;
     letter-spacing: 2px;
     cursor: pointer;
-    background:  rgb(178, 215, 220);
     border-radius: 5px;
+    transition: 0.5s;
+    background:  rgb(128, 190, 197);
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
     font-size: 15px;
-    box-shadow: 2px 2px 2px 1px #c3bdbd;
-    margin-left: 20px;
+    box-shadow: 2px 2px 2px 1px #000000;
 }
 .login_button {
     color: #000000;
@@ -53,8 +59,14 @@ h1 span {
     text-decoration: none;
     letter-spacing: 2px;
     cursor: pointer;
-    background:  rgb(178, 215, 220);
     border-radius: 5px;
+    transition: 0.5s;
+    background:  rgb(128, 190, 197);
+    border: 2px solid #000000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
     font-size: 15px;
-    box-shadow: 2px 2px 2px 1px #c3bdbd;
+    box-shadow: 2px 2px 2px 1px #000000;
 }
