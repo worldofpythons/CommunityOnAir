@@ -56,9 +56,8 @@ def show_report(report_id,city_id):
         return redirect ('/logout')
     data = {"id":report_id}
     user_data = {"id":session['user_id']}
-    city_dataa = {"id": city_id}
     city_data = {"id": city_id}
-    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), updates = Update.updates_with_cityid(city_dataa), city = City.get_one(city_data))
+    return render_template('/show.html', report = Report.get_reports_by_reportid_cityInfo(data), user= User.get_by_id(user_data), updates = Update.updates_with_report_id(data), city = City.get_one(city_data))
 
 # ---------------------------------------------------
 

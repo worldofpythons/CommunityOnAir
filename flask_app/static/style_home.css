@@ -3,7 +3,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-    background-image: linear-gradient(to bottom, transparent, rgb(128, 190, 197)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
+    background-image: linear-gradient(to bottom, transparent, rgb(78, 122, 127)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
     background-position: center;
     background-size: cover;
     height: 715px;
@@ -13,10 +13,10 @@ h1{
     font-size: 40px;
 }
 h1 span {
-    color: #b04f4f;
+    color: rgb(206, 127, 127);
 }
 .nav {
-    background-color: rgb(128, 190, 197);
+    background-color: rgb(78, 122, 127);
     height: 85px;
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ a {
 .user_name {
     padding-right: 10px;
     font-size: 18px;
-    color: #5e5e5e;
+    color: rgb(240, 161, 161);
     font-weight: bold;
 }
 
@@ -96,18 +96,18 @@ a {
     border-radius: 3px;
 }
 .reports {
-    color: #ffffff;
-    background-color: #000000;
+    color: #292424;
     font-size: 12px;
     margin: 0px;
     padding-left: 10px;
     font-family: monospace;
-    opacity: 0.8;
+    opacity: 0.7;
+    font-weight: bold;
 }
 h3 {
     margin: 0px;
     color: #ffffff;
-    background-color: #000000;
+    background-color: rgb(78, 122, 127);
     text-align: center;
     opacity: 0.8;
 }

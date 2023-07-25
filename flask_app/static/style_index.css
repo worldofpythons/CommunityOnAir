@@ -1,7 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-    background-image: linear-gradient(to bottom, transparent, rgb(128, 190, 197)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
+    background-image: linear-gradient(to bottom, transparent, rgb(78, 122, 127)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
     background-position: center;
     background-size: cover;
     /* backdrop-filter: blur(2px); */
@@ -14,16 +14,17 @@ body {
     margin-top: 50px;
 }
 h1 span {
-    color: #924040;
+    color: rgb(179, 110, 110);
 }
 .welcome {
     text-align: center;
     font-size: 80px;
-    color: rgb(96, 96, 84);
-    text-shadow: 4px 2px 4px #bdb6b6;
+    color: rgb(91, 142, 146);
+    text-shadow: 4px 4px 4px #000000;
+    font-weight: bold;
 }
 .head {
-    color: rgb(105, 159, 165);
+    color: rgb(91, 142, 146);
     margin-left: 20px;
 }
 .login_register_containers {
@@ -42,7 +43,7 @@ h1 span {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
-    background:  rgb(128, 190, 197);
+    background:  rgb(109, 170, 176);
     border: 2px solid #000000;
     cursor: pointer;
     border-radius: 5px;
@@ -61,7 +62,7 @@ h1 span {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
-    background:  rgb(128, 190, 197);
+    background:  rgb(109, 170, 176);
     border: 2px solid #000000;
     cursor: pointer;
     border-radius: 5px;

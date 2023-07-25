@@ -36,18 +36,18 @@
 
             <div class="each_two_reports">
                 {% for chicagoReport in chicagoReports %}
-                {% if chicagoReport.city_name == 'Chicago' and loop.index <= 2 %} 
-                <div class="two_reports">
+
+
+                {% if chicagoReport.city_name == 'Chicago' and loop.index <= 2 %} <div class="two_reports">
+
                     <a href="/city/show/{{chicagoReport.id}}/{{chicagoReport.cities_id}}"><img
                             src="/static/img/uploads/{{chicagoReport.image}}" alt="{{chicagoReport.image}}"
                             class="random_cities_images"></a>
-                    <p class="reports">{{chicagoReport.location}}</p>
+                    <p class="reports">{{chicagoReport.location}}</a>
             </div>
             {% endif %}
             {%endfor%}
-
         </div>
-
         <div class="each_two_reports">
             {% for chicagoReport in chicagoReports %}
             {% if chicagoReport.city_name == 'Chicago' and loop.index >= 3 %}
@@ -56,7 +56,7 @@
                 <a href="/city/show/{{chicagoReport.id}}/{{chicagoReport.cities_id}}"><img
                         src="/static/img/uploads/{{chicagoReport.image}}" alt="{{chicagoReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{chicagoReport.location}}</p>
+                <p class="reports">{{chicagoReport.location}}</a>
             </div>
             {% endif %}
             {%endfor%}
@@ -73,7 +73,7 @@
                 <a href="/city/show/{{newYorkReport.id}}/{{newYorkReport.cities_id}}"><img
                         src="/static/img/uploads/{{newYorkReport.image}}" alt="{{newYorkReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{newYorkReport.location}}</p>
+                <p class="reports">{{newYorkReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -86,7 +86,7 @@
             <a href="/city/show/{{newYorkReport.id}}/{{newYorkReport.cities_id}}"><img
                     src="/static/img/uploads/{{newYorkReport.image}}" alt="{{newYorkReport.image}}"
                     class="random_cities_images"></a>
-            <p class="reports">{{newYorkReport.location}}</p>
+            <p class="reports">{{newYorkReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -103,7 +103,7 @@
                 <a href="/city/show/{{miamiReport.id}}/{{miamiReport.cities_id}}"><img
                         src="/static/img/uploads/{{miamiReport.image}}" alt="{{miamiReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{miamiReport.location}}</p>
+                <p class="reports">{{miamiReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -116,7 +116,7 @@
             <a href="/city/show/{{miamiReport.id}}/{{miamiReport.cities_id}}"><img
                     src="/static/img/uploads/{{miamiReport.image}}" alt="{{miamiReport.image}}"
                     class="random_cities_images"></a>
-            <p class="reports">{{miamiReport.location}}</p>
+            <p class="reports">{{miamiReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -137,7 +137,7 @@
                     <a href="/city/show/{{losAngelesReport.id}}/{{losAngelesReport.cities_id}}"><img
                             src="/static/img/uploads/{{losAngelesReport.image}}" alt="{{losAngelesReport.image}}"
                             class="random_cities_images"></a>
-                    <p class="reports">{{losAngelesReport.location}}</p>
+                    <p class="reports">{{losAngelesReport.location}}</a>
             </div>
             {% endif %}
             {%endfor%}
@@ -150,7 +150,7 @@
                 <a href="/city/show/{{losAngelesReport.id}}/{{losAngelesReport.cities_id}}"><img
                         src="/static/img/uploads/{{losAngelesReport.image}}" alt="{{losAngelesReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{losAngelesReport.location}}</p>
+                <p class="reports">{{losAngelesReport.location}}</a>
             </div>
             {% endif %}
             {%endfor%}
@@ -167,7 +167,7 @@
                 <a href="/city/show/{{bostonReport.id}}/{{bostonReport.cities_id}}"><img
                         src="/static/img/uploads/{{bostonReport.image}}" alt="{{bostonReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{bostonReport.location}}</p>
+                <p class="reports">{{bostonReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -180,7 +180,7 @@
             <a href="/city/show/{{bostonReport.id}}/{{bostonReport.cities_id}}"><img
                     src="/static/img/uploads/{{bostonReport.image}}" alt="{{bostonReport.image}}"
                     class="random_cities_images"></a>
-            <p class="reports">{{bostonReport.location}}</p>
+            <p class="reports">{{bostonReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -197,7 +197,7 @@
                 <a href="/city/show/{{austinReport.id}}/{{austinReport.cities_id}}"><img
                         src="/static/img/uploads/{{austinReport.image}}" alt="{{austinReport.image}}"
                         class="random_cities_images"></a>
-                <p class="reports">{{austinReport.location}}</p>
+                <p class="reports">{{austinReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}
@@ -210,7 +210,7 @@
             <a href="/city/show/{{austinReport.id}}/{{austinReport.cities_id}}"><img
                     src="/static/img/uploads/{{austinReport.image}}" alt="{{austinReport.image}}"
                     class="random_cities_images"></a>
-            <p class="reports">{{austinReport.location}}</p>
+            <p class="reports">{{austinReport.location}}</a>
         </div>
         {% endif %}
         {%endfor%}

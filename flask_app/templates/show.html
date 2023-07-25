@@ -74,7 +74,8 @@
                 <div class="each_comment">
 
                     <div class="comment_details">
-                        <p class="commenter">By: {{report.name}}</p>
+
+                        <p class="commenter">By: {{update.users_name}}</p>
                         <p><strong>Update: </strong></p>
                         <p>{{update.details}}</p>
                         <p><strong>When: </strong></p>
@@ -82,9 +83,9 @@
                     </div>
 
                     <div class="comment_details">
-                        {% if session['user_id'] == report.users_id %}
-                        <a href="/edit/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="update_edit_button">Edit</a>
-                        <a href="/delete/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="update_delete_button">Delete</a>
+                        {% if session['user_id'] == update.users_id %}
+                        <a href="/edit/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="edit_button">Edit</a>
+                        <a href="/delete/comment/{{update.id}}/{{report.id}}/{{city.id}}" class="delete_button">Delete</a>
                         {% endif %}
                     </div>
                     

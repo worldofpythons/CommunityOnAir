@@ -3,7 +3,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
-    background-image: linear-gradient(to bottom, transparent, rgb(128, 190, 197)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
+    background-image: linear-gradient(to bottom, transparent, rgb(78, 122, 127)), url(https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg);
     background-position: center;
     background-size: cover;
     height: 715px;
@@ -13,10 +13,10 @@ h1{
     font-size: 40px;
 }
 h1 span {
-    color: #b04f4f;
+    color: rgb(206, 127, 127);
 }
 .nav {
-    background-color: rgb(128, 190, 197);
+    background-color: rgb(78, 122, 127);
     height: 85px;
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ a {
 .user_name {
     padding-right: 10px;
     font-size: 18px;
-    color: #5e5e5e;
+    color: rgb(240, 161, 161);
     font-weight: bold;
 }
 
@@ -145,22 +145,19 @@ h3 {
 
 .comments {
     display: inline-block;
-    /* flex-direction: row; */
-    /* justify-content: center; */
+    margin-left: 30px;
     align-items: center;
 
 }
 .comment_container {
     display: inline-block;
     align-items: center;
-    /* justify-content: space-around; */
     margin: 10px;
     color: #3d3535;
 }
 .each_comment {
     display: flex;
     flex-direction: column;
-
     height: 200px;
     width: 300px;
     border-radius: 10px;
@@ -170,12 +167,12 @@ h3 {
 }
 .commenter {
     text-align: right;
+    font-weight: bold;
 }
 .comment_details {
     color: #5e5e5e;
 }
 .comment_buttons {
-    /* text-align: right; */
     color: #5e5e5e;
 }
 /* --------------------------------------------------- */
@@ -183,81 +180,54 @@ h3 {
 /* BUTTONS */
 
 .view_button {
-    color: #453f3f;
+    color: #000000;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    background:  rgb(178, 215, 220);
+    background:  rgb(109, 170, 176);
     border-radius: 5px;
     font-size: 15px;
     box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
+    border: 2px solid #000000;
     padding: 5px;
     text-align: center;
 }
 .edit_button {
-    color: #453f3f;
+    color: #000000;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    background:  rgb(178, 215, 220);
+    background:  rgb(109, 170, 176);
     border-radius: 5px;
     font-size: 15px;
     box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
+    border: 2px solid #000000;
     padding: 5px;
     text-align: center;
 }
 .delete_button {
-    color: #453f3f;
+    color: #000000;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    background:  rgb(178, 215, 220);
+    background:  rgb(109, 170, 176);
     border-radius: 5px;
     font-size: 15px;
     box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
+    border: 2px solid #000000;
     padding: 5px;
     text-align: center;
 }
 .updatehere_button {
-    color: #453f3f;
+    color: #000000;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    background:  rgb(186, 220, 178);
+    background:  rgb(230, 139, 139);
     border-radius: 5px;
     font-size: 15px;
     box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
-    padding: 5px;
-    text-align: center;
-    margin-top: 20px;
-}
-.update_delete_button {
-    color: #453f3f;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    background:  rgb(220, 219, 178);
-    border-radius: 5px;
-    font-size: 15px;
-    box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
-    padding: 5px;
-    text-align: center;
-}
-.update_edit_button {
-    color: #453f3f;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    background:  rgb(220, 219, 178);
-    border-radius: 5px;
-    font-size: 15px;
-    box-shadow: 2px 2px 2px 1px #c3bdbd;
-    border: 2px solid #453f3f;
+    border: 2px solid #000000;
     padding: 5px;
     text-align: center;
     margin-top: 20px;

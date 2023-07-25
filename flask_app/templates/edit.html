@@ -63,7 +63,7 @@
                     <label for="resource"><strong>City:</strong></label>
                     <select name="city">
                         {% for city in cities %}
-                        <option value="{{city.id}}">{{city.city_name}}</option>
+                        <option value="{{city.id}}" {% if city.id == report.cities_id %} selected {% endif %}>{{city.city_name}}</option>
                         {% endfor %}
                     </select>
                 </div>
