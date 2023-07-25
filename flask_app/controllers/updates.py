@@ -23,7 +23,8 @@ def process_update(report_id,user_id,city_id):
     if 'user_id' not in session:
         return redirect('/logout')
     if not Update.is_valid_update(request.form):
-        flash("Please enter a valid update", "/update")
+        flash("Please enter a valid update", "update")
+        return redirect(f'/update/create/{report_id}/{user_id}/{city_id}')
     data = {
         "details": request.form['details'],
         "users_id": session['user_id'],
@@ -60,6 +61,9 @@ def edit_comment(id,idd,iddd):
 def update_comment(id,city_id, user_id, report_id):
     if 'user_id' not in session:
         return redirect('/logout')
+    if not Update.is_valid_update(request.form):
+        flash("Please enter a valid update", "update")
+        return redirect(f'/update/create/{report_id}/{user_id}/{city_id}')
     data = {"id": id,"details": request.form['details']}
     Update.update(data)
     user_data= {"id":session['user_id']}

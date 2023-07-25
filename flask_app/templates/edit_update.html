@@ -31,11 +31,23 @@
     </div>
     <!-- -----NAV BAR----- -->
 
+    <!-- -----FLASH MESSAGES ALERT----- -->
+    <div class="alert">
+        {% with messages = get_flashed_messages(category_filter=['update']) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <!-- -----FLASH MESSAGES ALERT----- -->  
+
     <!-- -----EDIT AN UPDATE----- -->
     <div class="bottom_section">
-        <h1>CITY NAME: {{report.city_name}}</span></h1>       
-        <p>REPORT INFO: {{report.what_happened}}</p>
-        <p>POSTED BY:{{user.name}} </p>        
+        <h1>{{report.city_name}}</span></h1>       
+        <p class="report_details">{{report.what_happened}}</p>
+        <p class="commenter">Posted by: {{user.name}} </p>        
         <div class="form_update_container">
             <form action="/update/comment/{{update.id}}/{{city.id}}/{{session['user_id']}}/{{report.id}}" method="post" class="form">
                 <h2 class="head_text">Edit the situation</h2>
@@ -44,7 +56,7 @@
                     <textarea name="details" rows="5" cols="45">{{update.details}}</textarea>
                 </div>
                 <div class="two_buttons">
-                    <a href="/city" class="cancel_button">Cancel</a>
+                    <a href="/city/show/{{report.id}}/{{city.id}}" class="cancel_button">Cancel</a>
                     <input type="submit" value="Submit" class="submit_button">
                 </div>
             </form>                   

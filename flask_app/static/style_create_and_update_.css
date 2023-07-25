@@ -78,7 +78,7 @@ a {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
-    background:  rgb(128, 197, 129);
+    background:  rgb(128, 190, 197);
     border: 2px solid #000000;
     cursor: pointer;
     border-radius: 5px;
@@ -116,7 +116,7 @@ a {
     cursor: pointer;
     border-radius: 5px;
     transition: 0.5s;
-    background: #e985b2;
+    background: rgb(128, 190, 197);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 2px solid #000000;
     cursor: pointer;
@@ -194,6 +194,11 @@ label {
     opacity: 0.8;
     text-shadow: 4px 2px 4px #bdb6b6;
 }
+
+/* --------------------------------------------------- */
+
+/* UPDATE PAGE */
+
 .form_update_container {
     display:flex;
     justify-content: center;
@@ -205,22 +210,16 @@ label {
     background-color: rgb(210, 220, 222);
     opacity: 0.8;
 }
-
-/* --------------------------------------------------- */
-
-/* UPDATE PAGE */
-
 .report_details {
     font-weight: bold;
     font-size: 25px;
-    color: #ffffff;
-    background-color: #5c5a5a;
-    opacity: 0.7;
+    color: #5c5a5a;
+    background-color: #ffffff;
+    opacity: 0.8;
 }
 .commenter {
-    color: #ffffff;
-    background-color: #5c5a5a;
+    color: #5c5a5a;
+    background-color: #ffffff;
     font-weight: bold;
-    opacity: 0.7;
-    text-align: right;
+    opacity: 0.8;
 }
