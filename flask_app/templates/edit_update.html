@@ -11,16 +11,12 @@
     <title>Update</title>
 </head>
 <body>
-
+    
     <!-- -----NAV BAR----- -->
     <div class="nav">
-    <h1>TEST HEAD</h1>        
-        {%for city in cities%}
-            <h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-        {%endfor%}
+        <h1>COMMUNITY <span>ON-AIR</span></h1>        
         <div class="top_right">
-            <p class="user_name">TEST USER NAME</p>            
-            <p>Welcome {{user.name}}</p>
+            <p class="user_name">Welcome, {{user.name}}</p>         
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
