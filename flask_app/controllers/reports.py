@@ -10,14 +10,14 @@ import os
 
 # ---------------------------------------------------
 
-# SHOW ALL REPORTS
+# # SHOW ALL REPORTS
 
-@app.route('/home')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect ('/logout')
-    data = {"id": session['id']}
-    return render_template('home.html', user= User.get_by_id(data), cities = City.cities(), reports= Report.reports_with_users())
+# @app.route('/home')
+# def dashboard():
+#     if 'user_id' not in session:
+#         return redirect ('/logout')
+#     data = {"id": session['id']}
+#     return render_template('home.html', user= User.get_by_id(data), cities = City.cities(), reports= Report.get_all_reports_with_userInfo())
 
 # ---------------------------------------------------
 
@@ -29,6 +29,7 @@ def each_city(city_id):
         return redirect ('/logout')
     data = {"id": session['user_id']}
     city_data = {"id": city_id}
+    print(city_data)
     return render_template('city_display.html', user= User.get_by_id(data), city= City.get_one(city_data), reports = Report.get_reports_by_cityId_userinfo(city_data))
 
 # ---------------------------------------------------

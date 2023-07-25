@@ -199,3 +199,135 @@ class Report:
         
         return reports
     
+    # @classmethod
+    # def get_all_reports_with_cities(cls):
+    #     query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id"
+    #     results = connectToMySQL('communityOnAir').query_db(query)
+    #     reports = []
+    #     for report in results:
+    #         this_report = cls(report)
+    #         city_data = {
+    #             "id": report['cities.id'],
+    #             "city_name": report['city_name'],
+    #             "created_at": report['cities.created_at'],
+    #             "updated_at": report['cities.updated_at']
+    #         }
+    #         this_report.reporter = city.City(city_data)
+    #         reports.append(report)
+    #     return reports
+    
+    #--------------------------
+    # GET ALL REPORTS from CHICAGO
+    @classmethod
+    def get_all_reports_with_chicago(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 2 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        chicagoReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            chicagoReports.append(report)
+        return chicagoReports
+    
+    #--------------------------
+    # GET ALL REPORTS from New York
+    @classmethod
+    def get_all_reports_with_newyork(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 3 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        newyorkReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            newyorkReports.append(report)
+        return newyorkReports
+    
+    #--------------------------
+    # GET ALL REPORTS from Miami
+    @classmethod
+    def get_all_reports_with_miami(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 7 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        miamiReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            miamiReports.append(report)
+        return miamiReports
+    
+    #--------------------------
+    # GET ALL REPORTS from Los Angeles
+    @classmethod
+    def get_all_reports_with_losangeles(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 9 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        losAngelesReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            losAngelesReports.append(report)
+        return losAngelesReports
+    
+    #--------------------------
+    # GET ALL REPORTS from Boston
+    @classmethod
+    def get_all_reports_with_boston(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 6 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        bostonReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            bostonReports.append(report)
+        return bostonReports
+    
+    #--------------------------
+    # GET ALL REPORTS from Austin
+    @classmethod
+    def get_all_reports_with_austin(cls):
+        query = "SELECT * FROM reports LEFT JOIN cities ON cities_id = cities.id WHERE cities_id = 4 LIMIT 4;"
+        results = connectToMySQL('communityOnAir').query_db(query)
+        austinReports = []
+        for report in results:
+            this_report = cls(report)
+            city_data = {
+                "id": report['cities.id'],
+                "city_name": report['city_name'],
+                "created_at": report['cities.created_at'],
+                "updated_at": report['cities.updated_at']
+            }
+            this_report.reporter = city.City(city_data)
+            austinReports.append(report)
+        return austinReports
+
+        

@@ -44,6 +44,8 @@ class City:
     def get_one(cls, data):
         query = "SELECT * FROM cities WHERE id = %(id)s;"
         results = connectToMySQL('communityOnAir').query_db(query, data)
+        print("------------------------------------------------------------")
+        print(results)
         return cls(results[0])
     
     # def city_with_reports(cls, id):
