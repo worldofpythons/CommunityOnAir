@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, session, flash
 from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.city import City
+from flask_app.models.report import Report
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -22,7 +23,10 @@ def home():
     if 'user_id' not in session:
         return redirect ('/')
     data = {"id": session['user_id']}
-    return render_template('home.html', user= User.get_by_id(data), cities = City.all_cities())
+    return render_template('home.html', user= User.get_by_id(data), cities = City.all_cities(), chicagoReports = Report.get_all_reports_with_chicago(),
+                            newYorkReports = Report.get_all_reports_with_newyork(), miamiReports = Report.get_all_reports_with_miami(), 
+                            losAngelesReports = Report.get_all_reports_with_losangeles(), bostonReports = Report.get_all_reports_with_boston(), 
+                            austinReports = Report.get_all_reports_with_austin())
 
 
 # ---------------------------------------------------

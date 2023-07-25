@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,18 @@
     <!-- -----LINK WITH CSS FILE----- -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style_home.css')}}">
     <!-- -----LINK WITH CSS FILE----- -->
-    
+
     <title>Home</title>
 </head>
+
 <body>
-    
+
     <!-- -----NAV BAR----- -->
     <div class="nav">
-        <h1>COMMUNITY <span>ON-AIR</span></h1>          
-            <div class="top_right">
-                <p class="user_name">Welcome, {{user.name}}</p>            
-            
+        <h1>COMMUNITY <span>ON-AIR</span></h1>
+        <div class="top_right">
+            <p class="user_name">Welcome, {{user.name}}</p>
+
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>|
                 <li><a href="/city">Find your city</a></li>|
@@ -30,156 +32,191 @@
 
     <div class="random_cities_top">
         <div class="each_random_table">
-            <h3>CHICAGO</h3>            
+            <h3>CHICAGO</h3>
+
             <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-            </div>   
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+                {% for chicagoReport in chicagoReports %}
+
+
+                {% if chicagoReport.city_name == 'Chicago' and loop.index <= 2 %} <div class="two_reports">
+
+                    <a href="/city/show/{{chicagoReport.id}}/{{chicagoReport.cities_id}}"><img
+                            src="/static/img/uploads/{{chicagoReport.image}}" alt="{{chicagoReport.image}}"
+                            class="random_cities_images"></a>
+                    <p class="reports">{{chicagoReport.location}}</a>
             </div>
+            {% endif %}
+            {%endfor%}
         </div>
-        <div class="each_random_table">
-            <h3>NEW YORK</h3>     
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-            </div>    
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+        <div class="each_two_reports">
+            {% for chicagoReport in chicagoReports %}
+            {% if chicagoReport.city_name == 'Chicago' and loop.index >= 3 %}
+            <div class="two_reports">
+
+                <a href="/city/show/{{chicagoReport.id}}/{{chicagoReport.cities_id}}"><img
+                        src="/static/img/uploads/{{chicagoReport.image}}" alt="{{chicagoReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{chicagoReport.location}}</a>
             </div>
+            {% endif %}
+            {%endfor%}
         </div>
-        <div class="each_random_table">
-            <h3>MIAMI</h3>     
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-            </div>
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports"></a>
-                </div>
-            </div>
+    </div>
+    <div class="each_random_table">
+        <h3>NEW YORK</h3>
+        <div class="each_two_reports">
+            {% for newYorkReport in newYorkReports %}
+
+
+            {% if newYorkReport.city_name == 'New York' and loop.index <= 2 %} <div class="two_reports">
+
+                <a href="/city/show/{{newYorkReport.id}}/{{newYorkReport.cities_id}}"><img
+                        src="/static/img/uploads/{{newYorkReport.image}}" alt="{{newYorkReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{newYorkReport.location}}</a>
         </div>
+        {% endif %}
+        {%endfor%}
+    </div>
+    <div class="each_two_reports">
+        {% for newYorkReport in newYorkReports %}
+        {% if newYorkReport.city_name == 'New York' and loop.index >= 3 %}
+        <div class="two_reports">
+
+            <a href="/city/show/{{newYorkReport.id}}/{{newYorkReport.cities_id}}"><img
+                    src="/static/img/uploads/{{newYorkReport.image}}" alt="{{newYorkReport.image}}"
+                    class="random_cities_images"></a>
+            <p class="reports">{{newYorkReport.location}}</a>
+        </div>
+        {% endif %}
+        {%endfor%}
+    </div>
+    </div>
+    <div class="each_random_table">
+        <h3>MIAMI</h3>
+        <div class="each_two_reports">
+            {% for miamiReport in miamiReports %}
+
+
+            {% if miamiReport.city_name == 'Miami' and loop.index <= 2 %} <div class="two_reports">
+
+                <a href="/city/show/{{miamiReport.id}}/{{miamiReport.cities_id}}"><img
+                        src="/static/img/uploads/{{miamiReport.image}}" alt="{{miamiReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{miamiReport.location}}</a>
+        </div>
+        {% endif %}
+        {%endfor%}
+    </div>
+    <div class="each_two_reports">
+        {% for miamiReport in miamiReports %}
+        {% if miamiReport.city_name == 'Miami' and loop.index >= 3 %}
+        <div class="two_reports">
+
+            <a href="/city/show/{{miamiReport.id}}/{{miamiReport.cities_id}}"><img
+                    src="/static/img/uploads/{{miamiReport.image}}" alt="{{miamiReport.image}}"
+                    class="random_cities_images"></a>
+            <p class="reports">{{miamiReport.location}}</a>
+        </div>
+        {% endif %}
+        {%endfor%}
+    </div>
+    </div>
     </div>
 
 
     <div class="random_cities_bottom">
         <div class="each_random_table">
-            <h3>LOS ANGELES</h3> 
+            <h3>LOS ANGELES</h3>
             <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+                {% for losAngelesReport in losAngelesReports %}
+    
+    
+                {% if losAngelesReport.city_name == 'Los Angeles' and loop.index <= 2 %} <div class="two_reports">
+    
+                    <a href="/city/show/{{losAngelesReport.id}}/{{losAngelesReport.cities_id}}"><img
+                            src="/static/img/uploads/{{losAngelesReport.image}}" alt="{{losAngelesReport.image}}"
+                            class="random_cities_images"></a>
+                    <p class="reports">{{losAngelesReport.location}}</a>
             </div>
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+            {% endif %}
+            {%endfor%}
+        </div>
+        <div class="each_two_reports">
+            {% for losAngelesReport in losAngelesReports %}
+            {% if losAngelesReport.city_name == 'Los Angeles' and loop.index >= 3 %}
+            <div class="two_reports">
+    
+                <a href="/city/show/{{losAngelesReport.id}}/{{losAngelesReport.cities_id}}"><img
+                        src="/static/img/uploads/{{losAngelesReport.image}}" alt="{{losAngelesReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{losAngelesReport.location}}</a>
             </div>
+            {% endif %}
+            {%endfor%}
+        </div>
         </div>
         <div class="each_random_table">
-            <h3>BOSTON</h3> 
+            <h3>BOSTON</h3>
             <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+                {% for bostonReport in bostonReports %}
+    
+    
+                {% if bostonReport.city_name == 'Boston' and loop.index <= 2 %} <div class="two_reports">
+    
+                    <a href="/city/show/{{bostonReport.id}}/{{bostonReport.cities_id}}"><img
+                            src="/static/img/uploads/{{bostonReport.image}}" alt="{{bostonReport.image}}"
+                            class="random_cities_images"></a>
+                    <p class="reports">{{bostonReport.location}}</a>
             </div>
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+            {% endif %}
+            {%endfor%}
+        </div>
+        <div class="each_two_reports">
+            {% for bostonReport in bostonReports %}
+            {% if bostonReport.city_name == 'Boston' and loop.index >= 3 %}
+            <div class="two_reports">
+    
+                <a href="/city/show/{{bostonReport.id}}/{{bostonReport.cities_id}}"><img
+                        src="/static/img/uploads/{{bostonReport.image}}" alt="{{bostonReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{bostonReport.location}}</a>
             </div>
+            {% endif %}
+            {%endfor%}
+        </div>
         </div>
         <div class="each_random_table">
-            <h3>AUSTIN</h3> 
+            <h3>AUSTIN</h3>
             <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+                {% for austinReport in austinReports %}
+    
+    
+                {% if austinReport.city_name == 'Austin' and loop.index <= 2 %} <div class="two_reports">
+    
+                    <a href="/city/show/{{austinReport.id}}/{{austinReport.cities_id}}"><img
+                            src="/static/img/uploads/{{austinReport.image}}" alt="{{austinReport.image}}"
+                            class="random_cities_images"></a>
+                    <p class="reports">{{austinReport.location}}</a>
             </div>
-            <div class="each_two_reports">
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
-                <div class="two_reports">
-                    <a href=""><img src="https://cdn.pixabay.com/photo/2022/12/28/06/33/francisco-7682269_1280.jpg" class="random_cities_images"></a>
-                    <p class="reports">Test Reports</a>
-                </div>
+            {% endif %}
+            {%endfor%}
+        </div>
+        <div class="each_two_reports">
+            {% for austinReport in austinReports %}
+            {% if austinReport.city_name == 'Austin' and loop.index >= 3 %}
+            <div class="two_reports">
+    
+                <a href="/city/show/{{austinReport.id}}/{{austinReport.cities_id}}"><img
+                        src="/static/img/uploads/{{austinReport.image}}" alt="{{austinReport.image}}"
+                        class="random_cities_images"></a>
+                <p class="reports">{{austinReport.location}}</a>
             </div>
+            {% endif %}
+            {%endfor%}
+        </div>
         </div>
     </div>
 </body>
-</html>
 
-<!-- {%for city in cities%}
-<h1><a href="/{{city.name}}/{{city.id}}">{{city.name}}</a></h1>
-{%endfor%}
-<div class="top_right">
-    <p class="user_name">TEST USER NAME</p>            
-    {% for user in users %}
-    <p>Welcome {{user.name}}</p>
-    {%endfor%} -->
+</html>
