@@ -81,14 +81,25 @@ class Update:
         result = connectToMySQL('communityOnAir').query_db(query, data)
         return result
     
+    # @classmethod
+    # def updates_with_cityid(cls,data):
+    #     query = "SELECT * FROM updates WHERE cities_id = %(id)s"
+    #     results = connectToMySQL('communityOnAir').query_db(query,data)
+    #     updates = []
+    #     for update in results:
+    #         updates.append(cls(update))
+    #     print(updates)
+    #     return updates
+    
     @classmethod
-    def updates_with_cityid(cls,data):
-        query = "SELECT * FROM updates WHERE cities_id = %(id)s"
+    def updates_with_report_id(cls,data):
+        query = "SELECT * FROM updates LEFT JOIN users ON updates.users_id = users.id WHERE updates.report_id = %(id)s;"
         results = connectToMySQL('communityOnAir').query_db(query,data)
         updates = []
         for update in results:
-            updates.append(cls(update))
-        print(updates)
+            update_obj = cls(update)
+            update_obj.users_name = update['name']
+            updates.append(update_obj)
         return updates
     
 # ------------------------
